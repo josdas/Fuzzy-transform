@@ -9,7 +9,7 @@ import java.util.Random;
  * Created by Stas on 26.06.2017.
  */
 public class Eval implements Evaluation {
-    static final int TEMP_SIZE = 60;
+    static final int TEMP_SIZE = 100;
 
     ArrayList<String> dictionary;
     ArrayList<String> tempWords;
@@ -21,7 +21,12 @@ public class Eval implements Evaluation {
         this.tempWords = new ArrayList<>();
         this.number = new ArrayList<>();
         random = new Random();
+        generation();
+    }
 
+    public void generation() {
+        tempWords.clear();
+        number.clear();
         for (int i = 0; i < TEMP_SIZE; i++) {
             int n = random.nextInt(dictionary.size());
             StringBuilder str = new StringBuilder(dictionary.get(n));
@@ -80,6 +85,6 @@ public class Eval implements Evaluation {
                 }
             }
         }
-        return minDis - errCounter/ TEMP_SIZE * 2;
+        return minDis - errCounter;
     }
 }

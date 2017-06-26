@@ -17,10 +17,11 @@ public class WConvector implements WordConvector {
 
     @Override
     public double[] get(String str) {
-        double[][] data = new double[str.length()][ALP + 1];
+        double[][] data = new double[str.length()][ALP + 2];
         for (int i = 0; i < str.length(); i++) {
             data[i][((int)str.charAt(i)) - 'a'] = 1.0;
             data[i][ALP] = 1.0;
+            data[i][ALP + 1] = str.length() / 10.0;
         }
         return recurrentNN.get(data);
     }

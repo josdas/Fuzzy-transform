@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="227b1daf-2cf0-425e-92b9-25a33fe3417d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/Evaluate/Eval.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/Evaluate/VectorN.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Evaluate/Eval.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Convector/WConvector.java" afterPath="$PROJECT_DIR$/src/com/Convector/WConvector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Convector/WordConvector.java" afterPath="$PROJECT_DIR$/src/com/Convector/WordConvector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Evaluate/Evaluation.java" afterPath="$PROJECT_DIR$/src/com/Evaluate/Evaluation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NeuralNetwork/ActiveFunction.java" afterPath="$PROJECT_DIR$/src/com/NeuralNetwork/ActiveFunction.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NeuralNetwork/BasicNN.java" afterPath="$PROJECT_DIR$/src/com/NeuralNetwork/BasicNN.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NeuralNetwork/Coefficient.java" afterPath="$PROJECT_DIR$/src/com/NeuralNetwork/Coefficient.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NeuralNetwork/Layer.java" afterPath="$PROJECT_DIR$/src/com/NeuralNetwork/Layer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NeuralNetwork/NeuralNetwork.java" afterPath="$PROJECT_DIR$/src/com/NeuralNetwork/NeuralNetwork.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/NeuralNetwork/RecurrentNN.java" afterPath="$PROJECT_DIR$/src/com/NeuralNetwork/RecurrentNN.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Testing.java" afterPath="$PROJECT_DIR$/src/com/Testing.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/Training.java" afterPath="$PROJECT_DIR$/src/com/Training.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Convector/WConvector.java" afterPath="$PROJECT_DIR$/src/com/Convector/WConvector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Evaluate/Eval.java" afterPath="$PROJECT_DIR$/src/com/Evaluate/Eval.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Testing.java" afterPath="$PROJECT_DIR$/src/com/Testing.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Training.java" afterPath="$PROJECT_DIR$/src/com/Training.java" />
     </list>
     <ignored path="Fuzzy search.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,30 +28,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RecurrentNN.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/RecurrentNN.java">
+      <file leaf-file-name="Coefficient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/Coefficient.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
               <folding>
-                <element signature="e#903#904#0" expanded="false" />
-                <element signature="e#950#951#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Layer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/Layer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-              <folding>
-                <element signature="e#1220#1221#0" expanded="false" />
-                <element signature="e#1245#1246#0" expanded="false" />
-                <element signature="e#1278#1279#0" expanded="false" />
-                <element signature="e#1304#1305#0" expanded="false" />
-                <marker date="1498515902013" expanded="true" signature="248:552" placeholder="{...}" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,25 +50,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Coefficient.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/Coefficient.java">
+      <file leaf-file-name="Training.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/Training.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+              <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
               <folding>
-                <element signature="e#816#817#0" expanded="false" />
-                <element signature="e#850#851#0" expanded="false" />
-                <element signature="e#890#891#0" expanded="false" />
-                <element signature="e#920#921#0" expanded="false" />
-                <element signature="e#1270#1271#0" expanded="false" />
-                <element signature="e#1304#1305#0" expanded="false" />
-                <element signature="e#1705#1706#0" expanded="false" />
-                <element signature="e#1739#1740#0" expanded="false" />
-                <element signature="e#1767#1768#0" expanded="false" />
-                <element signature="e#1801#1802#0" expanded="false" />
-                <marker date="1498515902013" expanded="true" signature="1141:1238" placeholder="{...}" />
-                <marker date="1498515902013" expanded="true" signature="1345:1673" placeholder="{...}" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1949#1950#0" expanded="true" />
+                <element signature="e#1981#1982#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActiveFunction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/ActiveFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,25 +84,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Training.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/Training.java">
+      <file leaf-file-name="WordConvector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/Convector/WordConvector.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1658#1659#0" expanded="true" />
-                <element signature="e#1690#1691#0" expanded="true" />
-              </folding>
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Testing.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/Testing.java">
+      <file leaf-file-name="WConvector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/Convector/WConvector.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="51" selection-start-line="44" selection-start-column="51" selection-end-line="44" selection-end-column="51" />
+              <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Testing.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/Testing.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.7168784">
+              <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,24 +126,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Eval.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Eval.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/Evaluate/Eval.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32486388">
+            <state vertical-scroll-proportion="0.0">
               <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VectorN.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/Evaluate/VectorN.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -208,8 +178,10 @@
         <option value="$PROJECT_DIR$/src/VectorN.java" />
         <option value="$PROJECT_DIR$/src/Evaluate/Eval.java" />
         <option value="$PROJECT_DIR$/src/Testing.java" />
-        <option value="$PROJECT_DIR$/src/com/Testing.java" />
         <option value="$PROJECT_DIR$/src/com/Evaluate/Eval.java" />
+        <option value="$PROJECT_DIR$/src/com/Convector/WConvector.java" />
+        <option value="$PROJECT_DIR$/src/com/Testing.java" />
+        <option value="$PROJECT_DIR$/src/com/Training.java" />
       </list>
     </option>
   </component>
@@ -723,15 +695,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/NeuralNetwork/BasicNN.java</url>
-          <line>30</line>
-          <properties />
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="31" />
+      <option name="time" value="35" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -748,30 +712,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Convector/WordConvector.java">
+    <entry file="file://$PROJECT_DIR$/src/com/Evaluate/VectorN.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Convector/WConvector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#696#697#0" expanded="false" />
-            <element signature="e#747#748#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/ActiveFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -780,46 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#903#904#0" expanded="false" />
-            <element signature="e#950#951#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/Coefficient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-          <folding>
-            <element signature="e#816#817#0" expanded="false" />
-            <element signature="e#850#851#0" expanded="false" />
-            <element signature="e#890#891#0" expanded="false" />
-            <element signature="e#920#921#0" expanded="false" />
-            <element signature="e#1270#1271#0" expanded="false" />
-            <element signature="e#1304#1305#0" expanded="false" />
-            <element signature="e#1705#1706#0" expanded="false" />
-            <element signature="e#1739#1740#0" expanded="false" />
-            <element signature="e#1767#1768#0" expanded="false" />
-            <element signature="e#1801#1802#0" expanded="false" />
-            <marker date="1498515902013" expanded="true" signature="1141:1238" placeholder="{...}" />
-            <marker date="1498515902013" expanded="true" signature="1345:1673" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/NeuralNetwork.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/BasicNN.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
           <folding />
         </state>
       </provider>
@@ -828,20 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-          <folding>
-            <element signature="e#1220#1221#0" expanded="false" />
-            <element signature="e#1245#1246#0" expanded="false" />
-            <element signature="e#1278#1279#0" expanded="false" />
-            <element signature="e#1304#1305#0" expanded="false" />
-            <marker date="1498515902013" expanded="true" signature="248:552" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Evaluate/VectorN.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -854,32 +744,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Evaluate/Eval.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Convector/WordConvector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/Convector/WConvector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/ActiveFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/BasicNN.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/Coefficient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/NeuralNetwork/NeuralNetwork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Training.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1658#1659#0" expanded="true" />
-            <element signature="e#1690#1691#0" expanded="true" />
+            <element signature="e#1949#1950#0" expanded="true" />
+            <element signature="e#1981#1982#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/Testing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="51" selection-start-line="44" selection-start-column="51" selection-end-line="44" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/Evaluate/Eval.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32486388">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+        <state vertical-scroll-proportion="-0.7168784">
+          <caret line="47" column="12" selection-start-line="47" selection-start-column="12" selection-end-line="47" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
