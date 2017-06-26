@@ -8,12 +8,12 @@ public class BasicNN implements NeuralNetwork<Double> {
 
     public BasicNN(Coefficient coef, ActiveFunction activeFunction) {
         layers = new Layer[coef.getNumBlocks() - 1];
-        for (int i = 1; i < layers.length; i++) {
-            layers[i] = new Layer(
+        for (int i = 0; i < layers.length; i++) {
+            layers[i - 1] = new Layer(
                     coef.getBlock(i),
                     activeFunction,
-                    coef.getSize(i - 1),
-                    coef.getSize(i)
+                    coef.getSize(i),
+                    coef.getSize(i + 1)
             );
         }
     }
@@ -32,7 +32,7 @@ public class BasicNN implements NeuralNetwork<Double> {
 
     @Override
     public Coefficient getCoefficient() {
-        Coefficient result = new Coefficient();
+        Coefficient result = new Coefficient(layers[0].getNumberIn());
         for (Layer layer : layers) {
             double[] temp = layer.get_coefficient();
             result.add(temp);

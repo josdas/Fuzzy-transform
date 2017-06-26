@@ -1,5 +1,6 @@
 package Convector;
 
+import NeuralNetwork.Coefficient;
 import NeuralNetwork.RecurrentNN;
 
 /**
@@ -21,5 +22,9 @@ public class WConvector implements WordConvector {
             data[i][((int)str.charAt(i)) - 'a'] = 1.0;
         }
         return recurrentNN.get(data);
+    }
+
+    public Coefficient getCoefficient() {
+        return recurrentNN.getCoefficient();
     }
 }
