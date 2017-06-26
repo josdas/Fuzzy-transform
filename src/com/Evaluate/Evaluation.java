@@ -1,6 +1,6 @@
-package Evaluate;
+package com.Evaluate;
 
-import Convector.WordConvector;
+import com.Convector.WordConvector;
 
 /**
  * Created by Stas on 26.06.2017.

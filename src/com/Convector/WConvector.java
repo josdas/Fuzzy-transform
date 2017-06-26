@@ -1,7 +1,7 @@
-package Convector;
+package com.Convector;
 
-import NeuralNetwork.Coefficient;
-import NeuralNetwork.RecurrentNN;
+import com.NeuralNetwork.Coefficient;
+import com.NeuralNetwork.RecurrentNN;
 
 /**
  * Created by Stas on 26.06.2017.
@@ -17,9 +17,10 @@ public class WConvector implements WordConvector {
 
     @Override
     public double[] get(String str) {
-        Double[][] data = new Double[str.length()][ALP];
+        double[][] data = new double[str.length()][ALP + 1];
         for (int i = 0; i < str.length(); i++) {
             data[i][((int)str.charAt(i)) - 'a'] = 1.0;
+            data[i][ALP] = 1.0;
         }
         return recurrentNN.get(data);
     }

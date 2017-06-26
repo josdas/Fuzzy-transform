@@ -1,4 +1,4 @@
-package NeuralNetwork;
+package com.NeuralNetwork;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,8 +46,8 @@ public class Coefficient {
         return data.get(y);
     }
 
-    public void add(double[] temp) {
-        size.add(temp.length);
+    public void add(double[] temp, int num) {
+        size.add(num);
         for (double v : temp) {
             data.add(v);
         }
@@ -58,12 +58,13 @@ public class Coefficient {
     }
 
     public double[] getBlock(int ind) {
-        double[] result = new double[size.get(ind)];
+        int n = size.get(ind) * size.get(ind + 1);
+        double[] result = new double[n];
         int y = 0;
-        for (int i = 1; i < ind + 1; i++) {
+        for (int i = 1; i < ind; i++) {
             y += size.get(i) * size.get(i - 1);
         }
-        for (int i = 0; i < size.get(ind) * size.get(ind + 1); i++) {
+        for (int i = 0; i < n; i++) {
             result[i] = data.get(y + i);
         }
         return result;

@@ -1,4 +1,4 @@
-package NeuralNetwork;
+package com.NeuralNetwork;
 
 /**
  * Created by Stas on 26.06.2017.
@@ -12,10 +12,10 @@ public class Layer {
         this.activeFunction = activeFunction;
         this.in = in;
         this.out = out;
-        wights = new double[in][out];
+        wights = new double[out][in];
 
-        for (int i = 0, cur = 0; i < in; i++) {
-            for (int j = 0; j < out; j++, cur++) {
+        for (int i = 0, cur = 0; i < out; i++) {
+            for (int j = 0; j < in; j++, cur++) {
                 wights[i][j] = block[cur];
             }
         }
@@ -24,8 +24,8 @@ public class Layer {
 
     public double[] get_coefficient() {
         double result[] = new double[in * out];
-        for (int i = 0, cur = 0; i < in; i++) {
-            for (int j = 0; j < out; j++, cur++) {
+        for (int i = 0, cur = 0; i < out; i++) {
+            for (int j = 0; j < in; j++, cur++) {
                 result[cur] = wights[i][j];
             }
         }
@@ -34,10 +34,10 @@ public class Layer {
 
     public double[] get(double[] data) {
         double[] result = new double[out];
-        for (int i = 0; i < in; i++) {
+        for (int i = 0; i < out; i++) {
             double temp = 0;
-            for (int j = 0; j < out; j++) {
-                temp += data[i] * wights[i][j];
+            for (int j = 0; j < in; j++) {
+                temp += data[j] * wights[i][j];
             }
             result[i] = activeFunction.active(temp);
         }

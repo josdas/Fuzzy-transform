@@ -1,8 +1,10 @@
-import Convector.WConvector;
-import Evaluate.Evaluation;
-import NeuralNetwork.ActiveFunction;
-import NeuralNetwork.Coefficient;
-import NeuralNetwork.RecurrentNN;
+package com;
+
+import com.Convector.WConvector;
+import com.Evaluate.Evaluation;
+import com.NeuralNetwork.ActiveFunction;
+import com.NeuralNetwork.Coefficient;
+import com.NeuralNetwork.RecurrentNN;
 
 import java.util.Random;
 
