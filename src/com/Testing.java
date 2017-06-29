@@ -2,7 +2,6 @@ package com;
 
 import com.Convector.WConvector;
 import com.Evaluate.Eval;
-import com.Evaluate.VectorN;
 import com.NeuralNetwork.Coefficient;
 import com.NeuralNetwork.RecurrentNN;
 
@@ -14,6 +13,12 @@ import java.util.Scanner;
 /**
  * Created by josdas on 26.06.2017.
  */
+
+
+//todo применить сверточную идею для хеширования любых строк
+//todo играть с метриками
+//todo сделать обучение с levenshtein
+
 public class Testing {
     public static final int ALP = 3;
     private final static int MAX_TIME = 60 * 10;

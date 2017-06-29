@@ -2,6 +2,7 @@ package com.Evaluate;
 
 import com.Convector.WordConvector;
 import com.Testing;
+import com.VectorN;
 
 import java.util.ArrayList;
 import java.util.Random;

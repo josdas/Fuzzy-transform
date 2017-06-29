@@ -8,12 +8,11 @@ import java.util.Random;
 public class Coefficient {
     private double data[][][];
     private int size[];
-
     private int indexStorage[][];
 
     public Coefficient(int... size) {
         // create |size| - 1 layers.
-        // The size of the first layer is size[0].
+        // The input size of the first layer is size[0].
         // All layers have random wights.
 
         this.size = size;

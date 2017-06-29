@@ -1,4 +1,4 @@
-package com.Evaluate;
+package com;
 
 /**
  * Created by josdas on 27.06.2017.
