@@ -1,18 +1,18 @@
 package com.NeuralNetwork;
 
 /**
- * Created by Stas on 26.06.2017.
+ * Created by josdas on 26.06.2017.
  */
 public class BasicNN implements NeuralNetwork<double[]> {
     private Coefficient coefficient;
-    private ActiveFunction active;
+    private ActiveFunction active; // all layers have the same function
 
     public BasicNN(Coefficient coefficient, ActiveFunction active) {
         this.coefficient = coefficient;
         this.active = active;
     }
 
-    public double[] get(double[] data, int number) {
+    private double[] get(double[] data, int number) {  // get result after the layer with number "number"
         final int in = coefficient.getNumberIn(number);
         final int out = coefficient.getNumberOut(number);
         double[] result = new double[out];
@@ -28,14 +28,10 @@ public class BasicNN implements NeuralNetwork<double[]> {
 
     @Override
     public double[] get(double[] data) {
-        double result[] = new double[data.length];
-        for (int i = 0; i < data.length; i++) {
-            result[i] = data[i];
-        }
         for (int i = 0; i < coefficient.layersCount(); i++) {
-            result = get(result, i);
+            data = get(data, i);
         }
-        return result;
+        return data;
     }
 
     @Override

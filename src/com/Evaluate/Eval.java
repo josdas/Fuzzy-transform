@@ -6,15 +6,15 @@ import com.Testing;
 import java.util.ArrayList;
 import java.util.Random;
 /**
- * Created by Stas on 26.06.2017.
+ * Created by josdas on 26.06.2017.
  */
 public class Eval implements Evaluation {
-    static final int TEMP_SIZE = 100;
+    private static final int TEMP_SIZE = 100;
 
-    ArrayList<String> dictionary;
-    ArrayList<String> tempWords;
-    ArrayList<Integer> number;
-    Random random;
+    private ArrayList<String> dictionary;
+    private ArrayList<String> tempWords;
+    private ArrayList<Integer> number;
+    private Random random;
 
     public Eval(ArrayList<String> dictionary) {
         this.dictionary = dictionary;
@@ -24,7 +24,7 @@ public class Eval implements Evaluation {
         generation();
     }
 
-    public void generation() {
+    public void generation() { // create new set of changed words from the dictionary
         tempWords.clear();
         number.clear();
         for (int i = 0; i < TEMP_SIZE; i++) {

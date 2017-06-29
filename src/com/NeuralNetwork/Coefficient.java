@@ -3,7 +3,7 @@ package com.NeuralNetwork;
 import java.util.Random;
 
 /**
- * Created by Stas on 26.06.2017.
+ * Created by josdas on 26.06.2017.
  */
 public class Coefficient {
     private double data[][][];
@@ -11,7 +11,11 @@ public class Coefficient {
 
     private int indexStorage[][];
 
-    public Coefficient(int ... size) {
+    public Coefficient(int... size) {
+        // create |size| - 1 layers.
+        // The size of the first layer is size[0].
+        // All layers have random wights.
+
         this.size = size;
         data = new double[size.length - 1][][];
         int summarySize = 0;
@@ -35,6 +39,12 @@ public class Coefficient {
                 }
             }
         }
+    }
+
+    public Coefficient(Coefficient coefficient) {
+        this.data = coefficient.data.clone();
+        this.size = coefficient.size.clone();
+        this.indexStorage = coefficient.indexStorage.clone();
     }
 
     public double get(int t) {

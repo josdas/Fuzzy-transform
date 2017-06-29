@@ -1,10 +1,10 @@
 package com.NeuralNetwork;
 
 /**
- * Created by Stas on 26.06.2017.
+ * Created by josdas on 26.06.2017.
  */
 public class RecurrentNN implements NeuralNetwork<double[][]> {
-    BasicNN basicNN;
+    private BasicNN basicNN;
 
     public RecurrentNN(Coefficient coefficient, ActiveFunction activeFunction) {
         basicNN = new BasicNN(coefficient, activeFunction);

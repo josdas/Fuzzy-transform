@@ -12,13 +12,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Created by Stas on 26.06.2017.
+ * Created by josdas on 26.06.2017.
  */
 public class Testing {
     public static final int ALP = 3;
-    final static int MAX_TIME = 60 * 10;
+    private final static int MAX_TIME = 60 * 10;
 
-    static ArrayList<String> generationDictionary(int n, int m, int alp) {
+    private static ArrayList<String> generationDictionary(int n, int m, int alp) {
         Random random = new Random();
         ArrayList<String> dictionary = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -63,7 +63,6 @@ public class Testing {
         dictionary.forEach(System.out::println);
         System.out.println("-------------------");
         while (true) {
-
             String str = scan.nextLine();
             double[] pointA = result.get(str);
             String best = "";
