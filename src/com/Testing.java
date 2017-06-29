@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class Testing {
     public static final int ALP = 3;
-    final static int MAX_TIME = 60 * 60 * 8;
+    final static int MAX_TIME = 60 * 10;
 
     static ArrayList<String> generationDictionary(int n, int m, int alp) {
         Random random = new Random();
@@ -42,7 +42,7 @@ public class Testing {
     public static void main(String[] args) {
         ArrayList<String> dictionary = generationDictionary(10, 6, ALP);
         Eval eval = new Eval(dictionary);
-        Coefficient coefficient = new Coefficient(38, 10, 10, 10);
+        Coefficient coefficient = new Coefficient(38, 10, 10);
         RecurrentNN recurrentNN = new RecurrentNN(coefficient, Training.ACTIVE_F_A);
         WConvector wConvector = new WConvector(recurrentNN);
         Training training = new Training(eval, wConvector);
@@ -60,9 +60,7 @@ public class Testing {
         Scanner scan = new Scanner(System.in);
 
 
-        for (String str : dictionary) {
-            System.out.println(str);
-        }
+        dictionary.forEach(System.out::println);
         System.out.println("-------------------");
         while (true) {
 

@@ -36,7 +36,7 @@ public class Training {
         for (int iteration = 0; iteration < numberIterations; iteration++) {
             Coefficient coefficient = convector.getCoefficient();
             for (int j = 0; j < n + 1; j++) {
-                int t = random.nextInt(coefficient.maxSize());
+                int t = random.nextInt(coefficient.summarySize());
                 double x = coefficient.get(t);
                 x += (random.nextDouble() - 0.5) * dh;
                 coefficient.set(t, x);

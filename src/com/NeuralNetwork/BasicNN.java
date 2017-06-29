@@ -4,18 +4,26 @@ package com.NeuralNetwork;
  * Created by Stas on 26.06.2017.
  */
 public class BasicNN implements NeuralNetwork<double[]> {
-    Layer[] layers;
+    private Coefficient coefficient;
+    private ActiveFunction active;
 
-    public BasicNN(Coefficient coef, ActiveFunction activeFunction) {
-        layers = new Layer[coef.getNumBlocks() - 1];
-        for (int i = 0; i < layers.length; i++) {
-            layers[i] = new Layer(
-                    coef.getBlock(i),
-                    activeFunction,
-                    coef.getSize(i),
-                    coef.getSize(i + 1)
-            );
+    public BasicNN(Coefficient coefficient, ActiveFunction active) {
+        this.coefficient = coefficient;
+        this.active = active;
+    }
+
+    public double[] get(double[] data, int number) {
+        final int in = coefficient.getNumberIn(number);
+        final int out = coefficient.getNumberOut(number);
+        double[] result = new double[out];
+        for (int i = 0; i < out; i++) {
+            double temp = 0;
+            for (int j = 0; j < in; j++) {
+                temp += data[j] * coefficient.get(number, i, j);
+            }
+            result[i] = active.active(temp);
         }
+        return result;
     }
 
     @Override
@@ -24,27 +32,22 @@ public class BasicNN implements NeuralNetwork<double[]> {
         for (int i = 0; i < data.length; i++) {
             result[i] = data[i];
         }
-        for (Layer layer : layers) {
-            result = layer.get(result);
+        for (int i = 0; i < coefficient.layersCount(); i++) {
+            result = get(result, i);
         }
         return result;
     }
 
     @Override
     public Coefficient getCoefficient() {
-        Coefficient result = new Coefficient(layers[0].getNumberIn());
-        for (Layer layer : layers) {
-            double[] temp = layer.get_coefficient();
-            result.add(temp, layer.getNumberOut());
-        }
-        return result;
+        return coefficient;
     }
 
     public int getNumberOut() {
-        return layers[layers.length - 1].getNumberOut();
+        return coefficient.getNumberOut(coefficient.layersCount() - 1);
     }
 
     public int getNumberIn() {
-        return layers[0].getNumberIn();
+        return coefficient.getNumberIn(0);
     }
 }

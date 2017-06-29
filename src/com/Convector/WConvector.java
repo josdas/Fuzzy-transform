@@ -21,7 +21,7 @@ public class WConvector implements WordConvector {
         for (int i = 0; i < str.length(); i++) {
             data[i][((int)str.charAt(i)) - 'a'] = 1.0;
             data[i][ALP] = 1.0;
-            data[i][ALP + 1] = str.length() / 10.0;
+            data[i][ALP + 1] = str.length();
         }
         return recurrentNN.get(data);
     }

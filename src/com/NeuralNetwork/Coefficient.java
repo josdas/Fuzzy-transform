@@ -1,80 +1,83 @@
 package com.NeuralNetwork;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 /**
  * Created by Stas on 26.06.2017.
  */
 public class Coefficient {
-    ArrayList<Double> data;
-    ArrayList<Integer> size;
+    private double data[][][];
+    private int size[];
 
-    public Coefficient(Integer ... size_) {
-        this.size = new ArrayList<Integer>(Arrays.asList(size_));
-        data = new ArrayList<>();
+    private int indexStorage[][];
+
+    public Coefficient(int ... size) {
+        this.size = size;
+        data = new double[size.length - 1][][];
+        int summarySize = 0;
+        for (int i = 1; i < size.length; i++) {
+            final int in = size[i - 1];
+            final int out = size[i];
+            summarySize += in * out;
+        }
+        indexStorage = new int[summarySize][];
 
         Random random = new Random();
 
-        for (int i = 1; i < size.size(); i++) {
-            int n = size.get(i) * size.get(i - 1);
-            for (int j = 0; j < n; j++) {
-                data.add(random.nextDouble() - 0.5);
+        for (int i = 1, cur = 0; i < size.length; i++) {
+            final int in = size[i - 1];
+            final int out = size[i];
+            data[i - 1] = new double[out][in];
+            for (int j = 0; j < out; j++) {
+                for (int k = 0; k < in; k++, cur++) {
+                    indexStorage[cur] = new int[]{i - 1, j, k};
+                    data[i - 1][j][k] = random.nextDouble() - 0.5;
+                }
             }
         }
     }
 
-    public Coefficient(int startSize) {
-        data = new ArrayList<>();
-        size = new ArrayList<>();
-        size.add(startSize);
-    }
-
     public double get(int t) {
-        return data.get(t);
+        return get(indexStorage[t][0], indexStorage[t][1], indexStorage[t][2]);
     }
 
     public void set(int t, double x) {
-        data.set(t, x);
+        set(indexStorage[t][0], indexStorage[t][1], indexStorage[t][2], x);
     }
 
-    public double get(int x, int y) {
-        for (int i = 1; i <= x + 1; i++) {
-            y += size.get(i) * size.get(i - 1);
-        }
-        return data.get(y);
+    public double get(int x, int y, int z) {
+        return data[x][y][z];
     }
 
-    public void add(double[] temp, int num) {
-        size.add(num);
-        for (double v : temp) {
-            data.add(v);
-        }
+    public void set(int x, int y, int z, double v) {
+        data[x][y][z] = v;
+    }
+
+    public int getNumberIn(int layer) {
+        return size[layer];
+    }
+
+    public int getNumberOut(int layer) {
+        return size[layer + 1];
+    }
+
+    public int layersCount() {
+        return size.length - 1;
     }
 
     public int getNumBlocks() {
-        return size.size();
+        return size.length;
     }
 
-    public double[] getBlock(int ind) {
-        int n = size.get(ind) * size.get(ind + 1);
-        double[] result = new double[n];
-        int y = 0;
-        for (int i = 1; i < ind; i++) {
-            y += size.get(i) * size.get(i - 1);
-        }
-        for (int i = 0; i < n; i++) {
-            result[i] = data.get(y + i);
-        }
-        return result;
+    public double[][] getBlock(int ind) {
+        return data[ind];
     }
 
     public int getSize(int i) {
-        return size.get(i);
+        return size[i];
     }
 
-    public int maxSize() {
-        return data.size();
+    public int summarySize() {
+        return indexStorage.length;
     }
 }
