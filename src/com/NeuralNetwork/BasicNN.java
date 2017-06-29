@@ -1,13 +1,15 @@
 package com.NeuralNetwork;
 
+import java.util.function.UnaryOperator;
+
 /**
  * Created by josdas on 26.06.2017.
  */
 public class BasicNN implements NeuralNetwork<double[]> {
     private Coefficient coefficient;
-    private ActiveFunction active; // all layers have the same function
+    private UnaryOperator<Double> active; // all layers have the same function
 
-    public BasicNN(Coefficient coefficient, ActiveFunction active) {
+    public BasicNN(Coefficient coefficient, UnaryOperator<Double> active) {
         this.coefficient = coefficient;
         this.active = active;
     }
@@ -21,7 +23,7 @@ public class BasicNN implements NeuralNetwork<double[]> {
             for (int j = 0; j < in; j++) {
                 temp += data[j] * coefficient.get(number, i, j);
             }
-            result[i] = active.active(temp);
+            result[i] = active.apply(temp);
         }
         return result;
     }

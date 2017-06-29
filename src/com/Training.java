@@ -2,11 +2,11 @@ package com;
 
 import com.Convector.WConvector;
 import com.Evaluate.Eval;
-import com.NeuralNetwork.ActiveFunction;
 import com.NeuralNetwork.Coefficient;
 import com.NeuralNetwork.RecurrentNN;
 
 import java.util.Random;
+import java.util.function.UnaryOperator;
 
 /**
  * Created by josdas on 26.06.2017.
@@ -14,8 +14,12 @@ import java.util.Random;
 public class Training {
     private static final double START_DH = 10;
     private static final double START_N = 30;
-    public static final ActiveFunction ACTIVE_F_A = a -> 1.0 / (1 + Math.exp(-a));
-    public static final ActiveFunction ACTIVE_F_B = a -> (Math.exp(a) - Math.exp(-a)) / (Math.exp(a) + Math.exp(-a));
+    public static final UnaryOperator<Double> ACTIVE_F_A = (Double a) -> {
+        return 1.0 / (1 + Math.exp(-a));
+    };
+    public static final UnaryOperator<Double> ACTIVE_F_B = (Double a) -> {
+        return (Math.exp(a) - Math.exp(-a)) / (Math.exp(a) + Math.exp(-a));
+    };
 
     private Eval evaluation;
     private WConvector convector;

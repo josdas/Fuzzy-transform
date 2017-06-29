@@ -1,7 +1,7 @@
 package com.Evaluate;
 
 /**
- * Created by Stas on 27.06.2017.
+ * Created by josdas on 27.06.2017.
  */
 public class VectorN {
     public static double distance(double[] a, double[] b) {

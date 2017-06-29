@@ -1,12 +1,14 @@
 package com.NeuralNetwork;
 
+import java.util.function.UnaryOperator;
+
 /**
  * Created by josdas on 26.06.2017.
  */
 public class RecurrentNN implements NeuralNetwork<double[][]> {
     private BasicNN basicNN;
 
-    public RecurrentNN(Coefficient coefficient, ActiveFunction activeFunction) {
+    public RecurrentNN(Coefficient coefficient, UnaryOperator<Double> activeFunction) {
         basicNN = new BasicNN(coefficient, activeFunction);
     }
 
