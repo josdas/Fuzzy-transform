@@ -4,6 +4,7 @@ import com.Convector.WConvector;
 import com.Evaluate.Eval;
 import com.NeuralNetwork.Coefficient;
 import com.NeuralNetwork.RecurrentNN;
+import com.Train.TrainingWC;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -48,9 +49,9 @@ public class Testing {
         ArrayList<String> dictionary = generationDictionary(10, 6, ALP);
         Eval eval = new Eval(dictionary);
         Coefficient coefficient = new Coefficient(38, 10, 10);
-        RecurrentNN recurrentNN = new RecurrentNN(coefficient, Training.ACTIVE_F_A);
+        RecurrentNN recurrentNN = new RecurrentNN(coefficient, TrainingWC.ACTIVE_F_A);
         WConvector wConvector = new WConvector(recurrentNN);
-        Training training = new Training(eval, wConvector);
+        TrainingWC training = new TrainingWC(eval, wConvector);
 
         long startTime = System.currentTimeMillis();
         while (true) {

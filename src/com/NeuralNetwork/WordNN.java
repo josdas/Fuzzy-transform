@@ -11,9 +11,13 @@ public class WordNN implements NeuralNetwork<int[]> {
     private int alp;
     private int neuronsForLetter;
 
-    public WordNN(Coefficient coefficient, int alp, int neuronsForLetter, UnaryOperator<Double> active) {
-        this.firstNN = new BasicNN(coefficient, active);
-        this.secondNN = new BasicNN(coefficient, active);
+    public WordNN(Coefficient coefficientF,
+                  Coefficient coefficientS,
+                  int alp,
+                  int neuronsForLetter,
+                  UnaryOperator<Double> active) {
+        this.firstNN = new BasicNN(coefficientF, active);
+        this.secondNN = new BasicNN(coefficientS, active);
         this.alp = alp;
         this.neuronsForLetter = neuronsForLetter;
     }
@@ -39,8 +43,11 @@ public class WordNN implements NeuralNetwork<int[]> {
         return result;
     }
 
-    @Override
-    public Coefficient getCoefficient() {
-        return null;
+    public Coefficient getFirstCoef() {
+        return firstNN.getCoefficient();
+    }
+
+    public Coefficient getSecondCoef() {
+        return secondNN.getCoefficient();
     }
 }

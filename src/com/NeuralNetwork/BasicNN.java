@@ -36,7 +36,6 @@ public class BasicNN implements NeuralNetwork<double[]> {
         return data;
     }
 
-    @Override
     public Coefficient getCoefficient() {
         return coefficient;
     }

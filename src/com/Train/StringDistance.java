@@ -1,4 +1,4 @@
-package com;
+package com.Train;
 
 /**
  * Created by josdas on 29.06.2017.

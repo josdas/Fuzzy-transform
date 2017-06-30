@@ -5,6 +5,4 @@ package com.NeuralNetwork;
  */
 public interface NeuralNetwork<T> {
     double[] get(T data);
-
-    Coefficient getCoefficient();
 }

@@ -29,8 +29,6 @@ public class RecurrentNN implements NeuralNetwork<double[][]> {
         return lastResult;
     }
 
-
-    @Override
     public Coefficient getCoefficient() {
         return basicNN.getCoefficient();
     }
