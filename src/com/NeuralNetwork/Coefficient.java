@@ -21,6 +21,7 @@ public class Coefficient {
         for (int i = 1; i < size.length; i++) {
             final int in = size[i - 1];
             final int out = size[i];
+
             summarySize += in * out;
         }
         indexStorage = new int[summarySize][];

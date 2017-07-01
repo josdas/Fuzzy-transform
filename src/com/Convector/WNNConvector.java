@@ -17,7 +17,7 @@ public class WNNConvector implements WordConvector {
     public double[] get(String str) {
         int[] temp = new int[str.length()];
         for (int i = 0; i < temp.length; i++) {
-            temp[i] = (int) (str.charAt(i) - 'a');
+            temp[i] = str.charAt(i) - 'a';
         }
         return wordNN.get(temp);
     }

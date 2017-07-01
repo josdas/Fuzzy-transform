@@ -24,7 +24,7 @@ import java.util.Scanner;
 
 public class Testing {
     public static final int ALP = 3;
-    private final static int MAX_TIME = 60 * 20;
+    private final static int MAX_TIME = 60 * 60;
 
     private static ArrayList<String> generationDictionary(int n, int m, int alp) {
         Random random = new Random();
@@ -50,8 +50,18 @@ public class Testing {
 
     public static void main(String[] args) {
         EvalWNN evalWNN = new EvalWNN();
-        Coefficient coefficient = new Coefficient(10, 15, 10);
-        WordNN wordNN = new WordNN(coefficient, coefficient, ALP, 10, AbsTraining.ACTIVE_F_A);
+        Coefficient coefficient = new Coefficient(
+                TrainingWNNC.NEURONS_FOR_LETTER,
+                15,
+                TrainingWNNC.NEURONS_FOR_LETTER
+        );
+        WordNN wordNN = new WordNN(
+                coefficient,
+                coefficient,
+                ALP,
+                TrainingWNNC.NEURONS_FOR_LETTER,
+                AbsTraining.ACTIVE_F_A
+        );
         WNNConvector wnnConvector = new WNNConvector(wordNN);
 
         TrainingWNNC trainingWNNC = new TrainingWNNC(evalWNN, wnnConvector);
@@ -62,6 +72,7 @@ public class Testing {
             if (timeSpent > MAX_TIME) {
                 break;
             }
+            System.out.println("Time spent: " + timeSpent + " second");
             trainingWNNC.train(100);
         }
 

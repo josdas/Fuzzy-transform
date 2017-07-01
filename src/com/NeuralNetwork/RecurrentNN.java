@@ -17,12 +17,8 @@ public class RecurrentNN implements NeuralNetwork<double[][]> {
         double[] lastResult = new double[basicNN.getNumberOut()];
         for (double[] aData : data) {
             double[] temp = new double[basicNN.getNumberIn()];
-            for (int j = 0; j < aData.length; j++) {
-                temp[j] = aData[j];
-            }
-            for (int j = 0; j < lastResult.length; j++) {
-                temp[aData.length + j] = lastResult[j];
-            }
+            System.arraycopy(aData, 0, temp, 0, aData.length);
+            System.arraycopy(lastResult, 0, temp, aData.length, lastResult.length);
 
             lastResult = basicNN.get(temp);
         }

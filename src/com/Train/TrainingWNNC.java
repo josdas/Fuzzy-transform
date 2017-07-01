@@ -10,7 +10,7 @@ import com.NeuralNetwork.WordNN;
  */
 public class TrainingWNNC extends AbsTraining<WNNConvector> {
     public final static int ALP = 3;
-    public final static int NEURONS_FOR_LETTER = 10;
+    public final static int NEURONS_FOR_LETTER = 5;
 
     private EvalWNN evaluation;
 
@@ -39,8 +39,8 @@ public class TrainingWNNC extends AbsTraining<WNNConvector> {
             if (nRes > result) {
                 result = nRes;
                 convector = nConvector;
-                dh *= 0.996;
-                n *= 0.996;
+                dh *= 0.998;
+                n *= 0.998;
             }
         }
         //evaluation.generation();

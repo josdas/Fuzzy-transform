@@ -11,8 +11,8 @@ import java.util.Random;
  * Created by josdas on 26.06.2017.
  */
 public class EvalWNN implements Evaluation {
-    private static final int TEMP_SIZE = 200;
-    private static final int MAX_SIZE = 8;
+    private static final int TEMP_SIZE = 400;
+    private static final int MAX_SIZE = 10;
     private static final int ALP = 3;
 
     private ArrayList<String> tempWords;

@@ -19,8 +19,10 @@ public class WConvector implements WordConvector {
     public double[] get(String str) {
         double[][] data = new double[str.length()][ALP + 2];
         for (int i = 0; i < str.length(); i++) {
-            data[i][((int)str.charAt(i)) - 'a'] = 1.0; // transform char to int with shift
-            data[i][ALP] = 1.0; // just constant for good results
+            // transform char to int with shift
+            data[i][((int)str.charAt(i)) - 'a'] = 1.0;
+            // just constant for good results
+            data[i][ALP] = 1.0;
             data[i][ALP + 1] = str.length();
         }
         return recurrentNN.get(data);

@@ -17,7 +17,10 @@ public class WordNN implements NeuralNetwork<int[]> {
                   int neuronsForLetter,
                   UnaryOperator<Double> active) {
         assert coefficientF.getNumberIn(0) == neuronsForLetter;
-        assert coefficientF.getNumberIn(0) == neuronsForLetter;
+        assert coefficientF.getNumberOut(coefficientF.layersCount() - 1) == neuronsForLetter;
+        assert coefficientS.getNumberIn(0) == neuronsForLetter;
+        assert coefficientS.getNumberOut(coefficientS.layersCount() - 1) == neuronsForLetter;
+
         this.firstNN = new BasicNN(coefficientF, active);
         this.secondNN = new BasicNN(coefficientS, active);
         this.alp = alp;
