@@ -41,9 +41,22 @@ public class Coefficient {
     }
 
     public Coefficient(Coefficient coefficient) {
-        this.data = coefficient.data.clone();
-        this.size = coefficient.size.clone();
-        this.indexStorage = coefficient.indexStorage.clone();
+        this.data = new double[coefficient.data.length][][];
+        for (int i = 0; i < data.length; i++) {
+            data[i] = new double[coefficient.data[i].length][];
+            for (int j = 0; j < data[i].length; j++) {
+                data[i][j] = new double[coefficient.data[i][j].length];
+                System.arraycopy(coefficient.data[i][j], 0, data[i][j], 0, data[i][j].length);
+            }
+        }
+
+        this.size = new int[coefficient.size.length];
+        System.arraycopy(coefficient.size, 0, size, 0, size.length);
+
+        this.indexStorage = new int[coefficient.indexStorage.length][3];
+        for (int i = 0; i < indexStorage.length; i++) {
+            System.arraycopy(coefficient.indexStorage[i], 0, indexStorage[i], 0, 3);
+        }
     }
 
     public double get(int t) {

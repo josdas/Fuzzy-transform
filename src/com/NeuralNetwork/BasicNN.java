@@ -17,6 +17,8 @@ public class BasicNN implements NeuralNetwork<double[]> {
     private double[] get(double[] data, int number) {  // get result after the layer with number "number"
         final int in = coefficient.getNumberIn(number);
         final int out = coefficient.getNumberOut(number);
+
+        assert in == data.length;
         double[] result = new double[out];
         for (int i = 0; i < out; i++) {
             double temp = 0;
