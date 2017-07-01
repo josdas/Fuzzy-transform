@@ -11,8 +11,8 @@ import java.util.Random;
  * Created by josdas on 26.06.2017.
  */
 public class EvalWNN implements Evaluation {
-    private static final int TEMP_SIZE = 100;
-    private static final int MAX_SIZE = 7;
+    private static final int TEMP_SIZE = 200;
+    private static final int MAX_SIZE = 8;
     private static final int ALP = 3;
 
     private ArrayList<String> tempWords;
@@ -24,7 +24,7 @@ public class EvalWNN implements Evaluation {
         generation();
     }
 
-    public void generation() { // create new set of changed words from the dictionary
+    public void generation() { // create new set of words
         tempWords.clear();
         for (int i = 0; i < TEMP_SIZE; i++) {
             StringBuilder str = new StringBuilder();
@@ -52,7 +52,7 @@ public class EvalWNN implements Evaluation {
                 double disPoint = VectorN.distance(a, b);
 
                 if (disStr > 0) {
-                    errCounter += Math.pow(Math.abs(disPoint - disStr) / disStr, 1);
+                    errCounter += Math.pow(Math.abs(disPoint - disStr) / disStr, 2);
                 }
             }
         }

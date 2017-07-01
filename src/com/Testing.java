@@ -24,7 +24,7 @@ import java.util.Scanner;
 
 public class Testing {
     public static final int ALP = 3;
-    private final static int MAX_TIME = 60 * 10;
+    private final static int MAX_TIME = 60 * 20;
 
     private static ArrayList<String> generationDictionary(int n, int m, int alp) {
         Random random = new Random();
@@ -50,7 +50,7 @@ public class Testing {
 
     public static void main(String[] args) {
         EvalWNN evalWNN = new EvalWNN();
-        Coefficient coefficient = new Coefficient(10, 10, 10);
+        Coefficient coefficient = new Coefficient(10, 15, 10);
         WordNN wordNN = new WordNN(coefficient, coefficient, ALP, 10, AbsTraining.ACTIVE_F_A);
         WNNConvector wnnConvector = new WNNConvector(wordNN);
 
@@ -68,6 +68,7 @@ public class Testing {
         WNNConvector result = trainingWNNC.getConvector();
         Scanner scan = new Scanner(System.in);
 
+        System.out.println("Training has been finished");
         while (true) {
             String strA = scan.nextLine();
             String strB = scan.nextLine();
