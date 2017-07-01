@@ -18,7 +18,7 @@ public class StringDistance {
                 dp[i][j] = Math.max(dp[i][j], dp[i - 1][j]);
             }
         }
-        return dp[n][m];
+        return 2 * dp[n][m] / (n + m);
     }
 
     public static double levenshteinSwap(String a, String b) {

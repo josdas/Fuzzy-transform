@@ -1,10 +1,11 @@
 package com;
 
-import com.Convector.WConvector;
-import com.Evaluate.Eval;
+import com.Convector.WNNConvector;
+import com.Evaluate.EvalWNN;
 import com.NeuralNetwork.Coefficient;
-import com.NeuralNetwork.RecurrentNN;
-import com.Train.TrainingWC;
+import com.NeuralNetwork.WordNN;
+import com.Train.AbsTraining;
+import com.Train.TrainingWNNC;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,9 +17,9 @@ import java.util.Scanner;
  */
 
 
-//todo применить сверточную идею для хеширования любых строк
+//done применить сверточную идею для хеширования любых строк
 //todo играть с метриками
-//todo сделать обучение с levenshtein
+//done сделать обучение с levenshtein
 
 public class Testing {
     public static final int ALP = 3;
@@ -38,6 +39,7 @@ public class Testing {
             String str = stringBuilder.toString();
             dictionary.add(str);
         }
+        // unique
         HashSet<String> hs = new HashSet<>();
         hs.addAll(dictionary);
         dictionary.clear();
@@ -46,12 +48,12 @@ public class Testing {
     }
 
     public static void main(String[] args) {
-        ArrayList<String> dictionary = generationDictionary(10, 6, ALP);
-        Eval eval = new Eval(dictionary);
-        Coefficient coefficient = new Coefficient(38, 10, 10);
-        RecurrentNN recurrentNN = new RecurrentNN(coefficient, TrainingWC.ACTIVE_F_A);
-        WConvector wConvector = new WConvector(recurrentNN);
-        TrainingWC training = new TrainingWC(eval, wConvector);
+        EvalWNN evalWNN = new EvalWNN();
+        Coefficient coefficient = new Coefficient(10, 10, 10);
+        WordNN wordNN = new WordNN(coefficient, coefficient, ALP, 10, AbsTraining.ACTIVE_F_A);
+        WNNConvector wnnConvector = new WNNConvector(wordNN);
+
+        TrainingWNNC trainingWNNC = new TrainingWNNC(evalWNN, wnnConvector);
 
         long startTime = System.currentTimeMillis();
         while (true) {
@@ -59,29 +61,19 @@ public class Testing {
             if (timeSpent > MAX_TIME) {
                 break;
             }
-            training.train(1000);
+            trainingWNNC.train(100);
         }
 
-        WConvector result = training.getConvector();
+        WNNConvector result = trainingWNNC.getConvector();
         Scanner scan = new Scanner(System.in);
 
-
-        dictionary.forEach(System.out::println);
-        System.out.println("-------------------");
         while (true) {
-            String str = scan.nextLine();
-            double[] pointA = result.get(str);
-            String best = "";
-            double minDis = Double.POSITIVE_INFINITY;
-            for (String word : dictionary) {
-                double[] pointB = result.get(word);
-                double temp = VectorN.distance(pointA, pointB);
-                if (minDis > temp) {
-                    minDis = temp;
-                    best = word;
-                }
-            }
-            System.out.println(best);
+            String strA = scan.nextLine();
+            String strB = scan.nextLine();
+            double[] pointA = result.get(strA);
+            double[] pointB = result.get(strB);
+
+            System.out.println(VectorN.distance(pointA, pointB));
         }
     }
 }

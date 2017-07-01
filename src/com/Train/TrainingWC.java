@@ -9,8 +9,11 @@ import com.NeuralNetwork.RecurrentNN;
  * Created by josdas on 26.06.2017.
  */
 public class TrainingWC extends AbsTraining<WConvector> {
+    private Eval evaluation;
+
     public TrainingWC(Eval evaluation, WConvector convector) {
-        super(evaluation, convector);
+        super(convector);
+        this.evaluation = evaluation;
     }
 
     public void train(int numberIterations) { // simple random gradient descent
