@@ -25,7 +25,12 @@ public class BasicNN implements NeuralNetwork<double[]> {
             for (int j = 0; j < in; j++) {
                 temp += data[j] * coefficient.get(number, i, j);
             }
-            result[i] = active.apply(temp);
+            if (number < coefficient.layersCount()) {
+                result[i] = active.apply(temp);
+            }
+            else {
+                result[i] = temp; // todo remove
+            }
         }
         return result;
     }

@@ -25,7 +25,7 @@ public class TrainingWNNC extends AbsTraining<WNNConvector> {
             Coefficient[] coefficient = convector.getCoefficient();
 
             for (Coefficient aCoefficient : coefficient) {
-                int m = random.nextInt((int) n) + 1;
+                int m = random.nextInt((int) n + 1) + 1;
                 for (int j = 0; j < m; j++) {
                     int t = random.nextInt(aCoefficient.summarySize());
                     double x = aCoefficient.get(t);
@@ -39,8 +39,8 @@ public class TrainingWNNC extends AbsTraining<WNNConvector> {
             if (nRes > result) {
                 result = nRes;
                 convector = nConvector;
-                dh *= 0.999;
-                n *= 0.999;
+                dh *= 0.996;
+                n *= 0.996;
             }
         }
         //evaluation.generation();

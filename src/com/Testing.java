@@ -5,6 +5,7 @@ import com.Evaluate.EvalWNN;
 import com.NeuralNetwork.Coefficient;
 import com.NeuralNetwork.WordNN;
 import com.Train.AbsTraining;
+import com.Train.StringDistance;
 import com.Train.TrainingWNNC;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class Testing {
             int l = random.nextInt(m) + 2;
             for (int j = 0; j < l; j++) {
                 stringBuilder.append(
-                        (char)(random.nextInt(alp) + 'a')
+                        (char) (random.nextInt(alp) + 'a')
                 );
             }
             String str = stringBuilder.toString();
@@ -73,7 +74,8 @@ public class Testing {
             double[] pointA = result.get(strA);
             double[] pointB = result.get(strB);
 
-            System.out.println(VectorN.distance(pointA, pointB));
+            System.out.println(VectorN.distance(pointA, pointB) + " "
+                    + StringDistance.levenshtein(strA, strB));
         }
     }
 }

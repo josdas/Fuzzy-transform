@@ -51,7 +51,9 @@ public class EvalWNN implements Evaluation {
                 double disStr = StringDistance.levenshtein(tempWords.get(i), tempWords.get(j));
                 double disPoint = VectorN.distance(a, b);
 
-                errCounter += Math.pow(Math.abs(disPoint - disStr), 2);
+                if (disStr > 0) {
+                    errCounter += Math.pow(Math.abs(disPoint - disStr) / disStr, 1);
+                }
             }
         }
         return -errCounter / tempWords.size() / tempWords.size();
