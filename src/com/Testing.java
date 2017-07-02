@@ -27,8 +27,7 @@ import java.util.Scanner;
 public class Testing {
     private static final int ALP = 3;
     private static final int NEURONS_FOR_LETTER = 10;
-    private static final long MAX_TIME = 60;
-    public static final char MINIMAL_LETTER = 'а';
+    private static final long MAX_TIME = 60 * 10;
     private static final int TOP_NUMBER = 10;
 
     private static TrainingWNN readTWNNFromFile() {
@@ -94,12 +93,6 @@ public class Testing {
         }
     }
 
-    private static void trainNNFromFile() {
-        TrainingWNN trainingWNN = readTWNNFromFile();
-        train(trainingWNN, MAX_TIME);
-        WNNConvector result = trainingWNN.getConvector();
-        saveWNNToFile(result);
-    }
 
     private static void handPairTest(WNNConvector convector) {
         Scanner scan = new Scanner(System.in);
@@ -155,12 +148,23 @@ public class Testing {
             for (int i = 0; i < TOP_NUMBER && i < distances.size(); i++) {
                 int v = distances.get(i).getValue();
                 double dis = distances.get(i).getKey();
-                System.out.println(dictionary.get(v) + " " + dis + " " );
+                System.out.println(
+                        dictionary.get(v) + " "
+                        + dis + " "
+                        + StringDistance.levenshtein(str, dictionary.get(v))
+                );
             }
         }
     }
 
-    public static void main(String[] args) {
+    private static void trainNNFromFile() {
+        TrainingWNN trainingWNN = readTWNNFromFile();
+        train(trainingWNN, MAX_TIME);
+        WNNConvector result = trainingWNN.getConvector();
+        saveWNNToFile(result);
+    }
+
+    private static void dictionaryTest() {
         ArrayList<String> dictionary = null;
         try {
             dictionary = Dictionary.readDictionary(
@@ -176,6 +180,11 @@ public class Testing {
         TrainingWNN trainingWNN = readTWNNFromFile();
         WNNConvector convector = trainingWNN.getConvector();
         convector.setAlp(33);
+        convector.setMinLetter('а');
         handDictionaryTest(convector, dictionary);
+    }
+
+    public static void main(String[] args) {
+        trainNNFromFile();
     }
 }

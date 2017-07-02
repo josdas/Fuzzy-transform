@@ -9,6 +9,7 @@ import com.NeuralNetwork.WordNN;
  */
 public class WNNConvector implements WordConvector {
     private WordNN wordNN;
+    private char minLetter;
 
     public WNNConvector(WordNN wordNN) {
         this.wordNN = wordNN;
@@ -16,15 +17,17 @@ public class WNNConvector implements WordConvector {
 
     public WNNConvector(Coefficient coefficientF,
                         Coefficient coefficientS,
-                        Option option) {
+                        Option option,
+                        char minLetter) {
         this.wordNN = new WordNN(coefficientF, coefficientS, option);
+        this.minLetter = minLetter;
     }
 
     @Override
     public double[] get(String str) {
         int[] temp = new int[str.length()];
         for (int i = 0; i < temp.length; i++) {
-            temp[i] = str.charAt(i) - com.Testing.MINIMAL_LETTER;;
+            temp[i] = str.charAt(i) - minLetter;
         }
         return wordNN.get(temp);
     }
@@ -43,4 +46,9 @@ public class WNNConvector implements WordConvector {
     public int getAlp() {
         return wordNN.getAlp();
     }
+
+    public void setMinLetter(char minLetter) {
+        this.minLetter = minLetter;
+    }
+
 }

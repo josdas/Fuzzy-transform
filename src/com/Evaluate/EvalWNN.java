@@ -11,7 +11,7 @@ import java.util.Random;
  * Created by josdas on 26.06.2017.
  */
 public class EvalWNN implements Evaluation {
-    private static final int TEMP_SIZE = 400;
+    private static final int TEMP_SIZE = 200;
     private static final int MAX_SIZE = 10;
     private static final int ALP = 3;
 
@@ -30,9 +30,17 @@ public class EvalWNN implements Evaluation {
         tempWords.clear();
         for (int i = 0; i < TEMP_SIZE; i++) {
             StringBuilder str = new StringBuilder();
+            StringBuilder strBug = new StringBuilder();
             int n = random.nextInt(MAX_SIZE) + 1;
             for (int j = 0; j < n; j++) {
-                str.append((char)(random.nextInt(ALP) + 'a'));
+                char c = (char) (random.nextInt(ALP) + 'a');
+                str.append(c);
+                if (random.nextInt(n) > 0) {
+                    strBug.append(c);
+                }
+            }
+            if (strBug.toString().length() > 0) {
+                tempWords.add(strBug.toString());
             }
             tempWords.add(str.toString());
         }
