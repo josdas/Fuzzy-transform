@@ -3,28 +3,38 @@ package com.Train;
 import com.Convector.WNNConvector;
 import com.Evaluate.EvalWNN;
 import com.NeuralNetwork.Coefficient;
+import com.NeuralNetwork.Option;
 import com.NeuralNetwork.WordNN;
 
 /**
  * Created by josdas on 30.06.2017.
  */
-public class TrainingWNNC extends AbsTraining<WNNConvector> {
-    public final static int ALP = 3;
-    public final static int NEURONS_FOR_LETTER = 10;
-
+public class TrainingWNN extends AbsTraining<WNNConvector> {
+    private Option option;
     private EvalWNN evaluation;
 
-    public TrainingWNNC(EvalWNN evaluation, WNNConvector convector) {
-        super(convector);
-        this.evaluation = evaluation;
+    public TrainingWNN(Coefficient startCoefF,
+                       Coefficient startCoefS,
+                       Option option) {
+        super(
+                new WNNConvector(
+                        startCoefF,
+                        startCoefS,
+                        option
+                )
+        );
+        this.option = option;
+        this.evaluation = new EvalWNN();
     }
 
     @Override
     public void train(int numberIterations) {
-        for (int iteration = 0; iteration < numberIterations; iteration++) {
-            Coefficient[] coefficient = convector.getCoefficient();
+        // simple random gradient descent
 
-            for (Coefficient aCoefficient : coefficient) {
+        for (int iteration = 0; iteration < numberIterations; iteration++) {
+            Coefficient[] coefficient = convector.getCoefficient(); // work with clone of the coefficients
+
+            for (Coefficient aCoefficient : coefficient) { // do small change of the arrays
                 int m = random.nextInt((int) n + 1) + 1;
                 for (int j = 0; j < m; j++) {
                     int t = random.nextInt(aCoefficient.summarySize());
@@ -33,9 +43,9 @@ public class TrainingWNNC extends AbsTraining<WNNConvector> {
                     aCoefficient.set(t, x);
                 }
             }
-            WordNN newNN = new WordNN(coefficient[0], coefficient[1], ALP, NEURONS_FOR_LETTER, ACTIVE_F_A);
+            WordNN newNN = new WordNN(coefficient[0], coefficient[1], option);
             WNNConvector nConvector = new WNNConvector(newNN);
-            double nRes = evaluation.eval(nConvector);
+            double nRes = evaluation.eval(nConvector); // calc function of the NN
             if (nRes > result) {
                 result = nRes;
                 convector = nConvector;

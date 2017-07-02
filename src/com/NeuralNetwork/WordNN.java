@@ -1,7 +1,5 @@
 package com.NeuralNetwork;
 
-import java.util.function.UnaryOperator;
-
 /**
  * Created by josdas on 29.06.2017.
  */
@@ -13,18 +11,16 @@ public class WordNN implements NeuralNetwork<int[]> {
 
     public WordNN(Coefficient coefficientF,
                   Coefficient coefficientS,
-                  int alp,
-                  int neuronsForLetter,
-                  UnaryOperator<Double> active) {
-        assert coefficientF.getNumberIn(0) == neuronsForLetter + 1;
-        assert coefficientF.getNumberOut(coefficientF.layersCount() - 1) == neuronsForLetter;
-        assert coefficientS.getNumberIn(0) == neuronsForLetter + 1;
-        assert coefficientS.getNumberOut(coefficientS.layersCount() - 1) == neuronsForLetter;
+                  Option option) {
+        assert coefficientF.getNumberIn(0) == option.neuronsForLetter + 1;
+        assert coefficientF.getNumberOut(coefficientF.layersCount() - 1) == option.neuronsForLetter;
+        assert coefficientS.getNumberIn(0) == option.neuronsForLetter + 1;
+        assert coefficientS.getNumberOut(coefficientS.layersCount() - 1) == option.neuronsForLetter;
 
-        this.firstNN = new BasicNN(coefficientF, active);
-        this.secondNN = new BasicNN(coefficientS, active);
-        this.alp = alp;
-        this.neuronsForLetter = neuronsForLetter;
+        this.firstNN = new BasicNN(coefficientF, option.active);
+        this.secondNN = new BasicNN(coefficientS, option.active);
+        this.alp = option.alp;
+        this.neuronsForLetter = option.neuronsForLetter;
     }
 
     @Override

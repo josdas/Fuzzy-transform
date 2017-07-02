@@ -3,7 +3,7 @@ package com;
 /**
  * Created by josdas on 27.06.2017.
  */
-public class VectorN {
+public class VectorDistance {
     public static double distance(double[] a, double[] b) {
         assert a.length == b.length;
         double result = 0;

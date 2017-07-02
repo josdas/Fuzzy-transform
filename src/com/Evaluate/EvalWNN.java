@@ -1,8 +1,8 @@
 package com.Evaluate;
 
 import com.Convector.WordConvector;
-import com.Train.StringDistance;
-import com.VectorN;
+import com.StringDistance;
+import com.VectorDistance;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -51,7 +51,7 @@ public class EvalWNN implements Evaluation {
                 double[] a = points[i];
                 double[] b = points[j];
                 double disStr = StringDistance.levenshtein(tempWords.get(i), tempWords.get(j));
-                double disPoint = VectorN.distance(a, b);
+                double disPoint = VectorDistance.distance(a, b);
 
                 if (disStr > 0) {
                     errCounter += Math.pow(Math.abs(disPoint - disStr) / disStr, 2);

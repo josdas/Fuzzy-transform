@@ -1,6 +1,7 @@
 package com.Convector;
 
 import com.NeuralNetwork.Coefficient;
+import com.NeuralNetwork.Option;
 import com.NeuralNetwork.WordNN;
 
 /**
@@ -11,6 +12,12 @@ public class WNNConvector implements WordConvector {
 
     public WNNConvector(WordNN wordNN) {
         this.wordNN = wordNN;
+    }
+
+    public WNNConvector(Coefficient coefficientF,
+                        Coefficient coefficientS,
+                        Option option) {
+        this.wordNN = new WordNN(coefficientF, coefficientS, option);
     }
 
     @Override

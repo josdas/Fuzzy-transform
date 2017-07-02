@@ -1,16 +1,11 @@
 package com;
 
 import com.Convector.WNNConvector;
-import com.Evaluate.EvalWNN;
 import com.NeuralNetwork.Coefficient;
-import com.NeuralNetwork.WordNN;
+import com.NeuralNetwork.Option;
 import com.Train.AbsTraining;
-import com.Train.StringDistance;
-import com.Train.TrainingWNNC;
+import com.Train.TrainingWNN;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -26,47 +21,25 @@ import java.util.Scanner;
 
 public class Testing {
     public static final int ALP = 3;
-    private final static int MAX_TIME = 60 * 10;
-
-    private static ArrayList<String> generationDictionary(int n, int m, int alp) {
-        Random random = new Random();
-        ArrayList<String> dictionary = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            StringBuilder stringBuilder = new StringBuilder();
-            int l = random.nextInt(m) + 2;
-            for (int j = 0; j < l; j++) {
-                stringBuilder.append(
-                        (char) (random.nextInt(alp) + 'a')
-                );
-            }
-            String str = stringBuilder.toString();
-            dictionary.add(str);
-        }
-        // unique
-        HashSet<String> hs = new HashSet<>();
-        hs.addAll(dictionary);
-        dictionary.clear();
-        dictionary.addAll(hs);
-        return dictionary;
-    }
+    public static final int NEURONS_FOR_LETTER = 10;
+    private static final int MAX_TIME = 60 * 10;
 
     public static void main(String[] args) {
-        EvalWNN evalWNN = new EvalWNN();
         Coefficient coefficient = new Coefficient(
-                TrainingWNNC.NEURONS_FOR_LETTER + 1,
+                NEURONS_FOR_LETTER + 1,
                 15,
-                TrainingWNNC.NEURONS_FOR_LETTER
+                NEURONS_FOR_LETTER
         );
-        WordNN wordNN = new WordNN(
-                coefficient,
-                coefficient,
+        Option option = new Option(
+                AbsTraining.ACTIVE_F_A,
                 ALP,
-                TrainingWNNC.NEURONS_FOR_LETTER,
-                AbsTraining.ACTIVE_F_A
+                NEURONS_FOR_LETTER
         );
-        WNNConvector wnnConvector = new WNNConvector(wordNN);
-
-        TrainingWNNC trainingWNNC = new TrainingWNNC(evalWNN, wnnConvector);
+        TrainingWNN trainingWNN = new TrainingWNN(
+                coefficient,
+                coefficient,
+                option
+        );
 
         long startTime = System.currentTimeMillis();
         while (true) {
@@ -75,10 +48,10 @@ public class Testing {
                 break;
             }
             System.out.println("Time spent: " + timeSpent + " second");
-            trainingWNNC.train(100);
+            trainingWNN.train(100);
         }
 
-        WNNConvector result = trainingWNNC.getConvector();
+        WNNConvector result = trainingWNN.getConvector();
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Training has been finished");
@@ -88,7 +61,7 @@ public class Testing {
             double[] pointA = result.get(strA);
             double[] pointB = result.get(strB);
 
-            System.out.println(VectorN.distance(pointA, pointB) + " "
+            System.out.println(VectorDistance.distance(pointA, pointB) + " "
                     + StringDistance.levenshtein(strA, strB));
         }
     }
