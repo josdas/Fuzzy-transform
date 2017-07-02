@@ -27,7 +27,7 @@ import java.util.Scanner;
 public class Testing {
     private static final int ALP = 3;
     private static final int NEURONS_FOR_LETTER = 10;
-    private static final long MAX_TIME = 60 * 10;
+    private static final long MAX_TIME = 60 * 60;
     private static final int TOP_NUMBER = 10;
 
     private static TrainingWNN readTWNNFromFile() {
@@ -61,6 +61,10 @@ public class Testing {
                 15,
                 NEURONS_FOR_LETTER
         );
+        Coefficient coefficientE = new Coefficient(
+                NEURONS_FOR_LETTER + 1,
+                NEURONS_FOR_LETTER
+        );
         Option option = new Option(
                 AbsTraining.ACTIVE_F_A,
                 ALP,
@@ -69,7 +73,7 @@ public class Testing {
         return new TrainingWNN(
                 coefficient,
                 coefficient,
-                coefficient,
+                coefficientE,
                 option
         );
     }
@@ -163,7 +167,7 @@ public class Testing {
     }
 
     private static void trainNNFromFile() {
-        TrainingWNN trainingWNN = generationRandomTWNN();
+        TrainingWNN trainingWNN = readTWNNFromFile();
         train(trainingWNN, MAX_TIME);
         WNNConvector result = trainingWNN.getConvector();
         saveWNNToFile(result);

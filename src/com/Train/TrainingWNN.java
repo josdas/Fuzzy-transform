@@ -11,7 +11,7 @@ import com.NeuralNetwork.WordNN;
  */
 public class TrainingWNN extends AbsTraining<WNNConvector> {
     private static final double START_DH = 5;
-    private static final double START_N = 7;
+    private static final double START_N = 5;
     private static final double DH_DECREASE_K = 0.999;
     private static final double N_DECREASE_K = 0.999;
     private static final double DH_MIN = 0.1;

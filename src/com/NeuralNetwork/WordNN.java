@@ -16,14 +16,16 @@ public class WordNN implements NeuralNetwork<int[]> {
                   Option option) {
         assert coefficientF.getNumberIn(0) == option.neuronsForLetter + 1;
         assert coefficientF.getNumberOut(coefficientF.layersCount() - 1) == option.neuronsForLetter;
+
         assert coefficientS.getNumberIn(0) == option.neuronsForLetter + 1;
         assert coefficientS.getNumberOut(coefficientS.layersCount() - 1) == option.neuronsForLetter;
+
         assert coefficientE.getNumberIn(0) == option.neuronsForLetter + 1;
-        assert coefficientE.getNumberOut(coefficientS.layersCount() - 1) == option.neuronsForLetter;
+        assert coefficientE.getNumberOut(coefficientE.layersCount() - 1) == option.neuronsForLetter;
 
         this.firstNN = new BasicNN(coefficientF, option.active);
         this.secondNN = new BasicNN(coefficientS, option.active);
-        this.endNN = new BasicNN(coefficientE, option.active, x -> x);
+        this.endNN = new BasicNN(coefficientE, x -> x);
         this.alp = option.alp;
         this.neuronsForLetter = option.neuronsForLetter;
     }

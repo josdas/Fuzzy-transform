@@ -36,7 +36,7 @@ public class BasicNN implements NeuralNetwork<double[]> {
                 temp += data[j] * coefficient.get(number, i, j);
             }
             // chosen function depends on number
-            if (number < coefficient.layersCount()) {
+            if (number < coefficient.layersCount() - 1) {
                 result[i] = active.apply(temp);
             } else {
                 result[i] = activeLast.apply(temp);
