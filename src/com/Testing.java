@@ -18,6 +18,7 @@ import java.util.Scanner;
 //done сделать обучение с levenshtein
 //todo геометрический поиск ближайших точек через случайные прямые
 //todo словарь + быстрый приближенный поиск (можно делать точный поиск по ближайшим)
+//done файлы
 
 public class Testing {
     public static final int ALP = 3;

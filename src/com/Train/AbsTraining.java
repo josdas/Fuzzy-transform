@@ -9,7 +9,6 @@ import java.util.function.UnaryOperator;
  * Created by josdas on 30.06.2017.
  */
 public abstract class AbsTraining<T extends WordConvector> {
-
     public static final UnaryOperator<Double> ACTIVE_F_A = (Double a) -> {
         return 1.0 / (1 + Math.exp(-a));
     };

@@ -1,8 +1,11 @@
 package com;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by josdas on 02.07.2017.
@@ -27,6 +30,17 @@ public class Dictionary {
         hs.addAll(dictionary);
         dictionary.clear();
         dictionary.addAll(hs);
+        return dictionary;
+    }
+
+    public static ArrayList<String> readDictionary(String fileName) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File(fileName));
+        ArrayList<String> dictionary = new ArrayList<>();
+        final int n = scanner.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            dictionary.add(scanner.useDelimiter("\\A").next());
+        }
         return dictionary;
     }
 }

@@ -1,6 +1,11 @@
 package com.NeuralNetwork;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Created by josdas on 26.06.2017.
@@ -21,7 +26,6 @@ public class Coefficient {
         for (int i = 1; i < size.length; i++) {
             final int in = size[i - 1];
             final int out = size[i];
-
             summarySize += in * out;
         }
         indexStorage = new int[summarySize][];
@@ -36,6 +40,37 @@ public class Coefficient {
                 for (int k = 0; k < in; k++, cur++) {
                     indexStorage[cur] = new int[]{i - 1, j, k};
                     data[i - 1][j][k] = random.nextDouble() - 0.5;
+                }
+            }
+        }
+    }
+
+    public Coefficient(String fileName) throws FileNotFoundException {
+        Scanner scanner = new Scanner(new File(fileName));
+        final int n = scanner.nextInt();
+
+        size = new int[n];
+        for (int i = 0; i < n; i++) {
+            size[i] = scanner.nextInt();
+        }
+        data = new double[n - 1][][];
+
+        int summarySize = 0;
+        for (int i = 1; i < size.length; i++) {
+            final int in = size[i - 1];
+            final int out = size[i];
+            summarySize += in * out;
+        }
+        indexStorage = new int[summarySize][];
+
+        for (int i = 1, cur = 0; i < size.length; i++) {
+            final int in = size[i - 1];
+            final int out = size[i];
+            data[i - 1] = new double[out][in];
+            for (int j = 0; j < out; j++) {
+                for (int k = 0; k < in; k++, cur++) {
+                    indexStorage[cur] = new int[]{i - 1, j, k};
+                    data[i - 1][j][k] = scanner.nextDouble();
                 }
             }
         }
@@ -94,5 +129,18 @@ public class Coefficient {
 
     public int summarySize() {
         return indexStorage.length;
+    }
+
+    public void save(String fileName) throws FileNotFoundException, UnsupportedEncodingException {
+        PrintWriter writer = new PrintWriter(fileName, "UTF-8");
+        writer.println(size.length);
+        for (int v : size) {
+            writer.write(v + " ");
+        }
+        writer.write("\n");
+        for (int i = 0; i < summarySize(); i++) {
+            writer.write(get(i) + " ");
+        }
+        writer.close();
     }
 }
