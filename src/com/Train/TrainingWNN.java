@@ -12,8 +12,8 @@ import com.NeuralNetwork.WordNN;
 public class TrainingWNN extends AbsTraining<WNNConvector> {
     private static final double START_DH = 5;
     private static final double START_N = 7;
-    private static final double DH_DECREASE_K = 0.995;
-    private static final double N_DECREASE_K = 0.995;
+    private static final double DH_DECREASE_K = 0.999;
+    private static final double N_DECREASE_K = 0.999;
     private static final double DH_MIN = 0.1;
     private static final double N_MIN = 1;
 
@@ -25,11 +25,13 @@ public class TrainingWNN extends AbsTraining<WNNConvector> {
 
     public TrainingWNN(Coefficient startCoefF,
                        Coefficient startCoefS,
+                       Coefficient startCoefE,
                        Option option) {
         super(
                 new WNNConvector(
                         startCoefF,
                         startCoefS,
+                        startCoefE,
                         option,
                         'a'
                 )
@@ -56,7 +58,7 @@ public class TrainingWNN extends AbsTraining<WNNConvector> {
                     aCoefficient.set(t, x);
                 }
             }
-            WordNN newNN = new WordNN(coefficient[0], coefficient[1], option);
+            WordNN newNN = new WordNN(coefficient[0], coefficient[1], coefficient[2], option);
             WNNConvector nConvector = new WNNConvector(newNN);
 
             // calc function of the NN

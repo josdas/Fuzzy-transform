@@ -33,6 +33,7 @@ public class Testing {
     private static TrainingWNN readTWNNFromFile() {
         Coefficient coefficientF = null;
         Coefficient coefficientS = null;
+        Coefficient coefficientE = null;
         Option option = new Option(
                 AbsTraining.ACTIVE_F_A,
                 ALP,
@@ -41,6 +42,7 @@ public class Testing {
         try {
             coefficientF = new Coefficient("First.txt");
             coefficientS = new Coefficient("Second.txt");
+            coefficientE = new Coefficient("End.txt");
         } catch (FileNotFoundException e) {
             System.out.println("Fail to read the NN");
             System.exit(1);
@@ -48,6 +50,7 @@ public class Testing {
         return new TrainingWNN(
                 coefficientF,
                 coefficientS,
+                coefficientE,
                 option
         );
     }
@@ -64,6 +67,7 @@ public class Testing {
                 NEURONS_FOR_LETTER
         );
         return new TrainingWNN(
+                coefficient,
                 coefficient,
                 coefficient,
                 option
@@ -88,6 +92,7 @@ public class Testing {
         try {
             result.getCoefficient()[0].save("First.txt");
             result.getCoefficient()[1].save("Second.txt");
+            result.getCoefficient()[2].save("End.txt");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             System.out.println("Fail to saveWNNToFile the NN");
         }
@@ -158,7 +163,14 @@ public class Testing {
     }
 
     private static void trainNNFromFile() {
-        TrainingWNN trainingWNN = readTWNNFromFile();
+        TrainingWNN trainingWNN = generationRandomTWNN();
+        train(trainingWNN, MAX_TIME);
+        WNNConvector result = trainingWNN.getConvector();
+        saveWNNToFile(result);
+    }
+
+    private static void trainNNFromRand() {
+        TrainingWNN trainingWNN = generationRandomTWNN();
         train(trainingWNN, MAX_TIME);
         WNNConvector result = trainingWNN.getConvector();
         saveWNNToFile(result);
@@ -185,6 +197,6 @@ public class Testing {
     }
 
     public static void main(String[] args) {
-        trainNNFromFile();
+        trainNNFromRand();
     }
 }

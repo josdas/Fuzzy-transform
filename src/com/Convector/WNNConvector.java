@@ -17,9 +17,10 @@ public class WNNConvector implements WordConvector {
 
     public WNNConvector(Coefficient coefficientF,
                         Coefficient coefficientS,
+                        Coefficient coefficientE,
                         Option option,
                         char minLetter) {
-        this.wordNN = new WordNN(coefficientF, coefficientS, option);
+        this.wordNN = new WordNN(coefficientF, coefficientS, coefficientE, option);
         this.minLetter = minLetter;
     }
 
@@ -35,7 +36,8 @@ public class WNNConvector implements WordConvector {
     public Coefficient[] getCoefficient() {
         return new Coefficient[]{
                 new Coefficient(wordNN.getFirstCoef()),
-                new Coefficient(wordNN.getSecondCoef())
+                new Coefficient(wordNN.getSecondCoef()),
+                new Coefficient(wordNN.getEndCoef())
         };
     }
 

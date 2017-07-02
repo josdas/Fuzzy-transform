@@ -6,14 +6,20 @@ import java.util.function.UnaryOperator;
  * Created by josdas on 26.06.2017.
  */
 public class BasicNN implements NeuralNetwork<double[]> {
-    // the last layer has linear function of activation
-
     private Coefficient coefficient;
     private UnaryOperator<Double> active; // all layers have the same function except the last
+    private UnaryOperator<Double> activeLast;
 
     public BasicNN(Coefficient coefficient, UnaryOperator<Double> active) {
         this.coefficient = coefficient;
         this.active = active;
+        this.activeLast = active;
+    }
+
+    public BasicNN(Coefficient coefficient, UnaryOperator<Double> active, UnaryOperator<Double> activeLast) {
+        this.coefficient = coefficient;
+        this.active = active;
+        this.activeLast = activeLast;
     }
 
     private double[] get(double[] data, int number) {
@@ -29,12 +35,11 @@ public class BasicNN implements NeuralNetwork<double[]> {
             for (int j = 0; j < in; j++) {
                 temp += data[j] * coefficient.get(number, i, j);
             }
-
             // chosen function depends on number
             if (number < coefficient.layersCount()) {
                 result[i] = active.apply(temp);
             } else {
-                result[i] = temp;
+                result[i] = activeLast.apply(temp);
             }
         }
         return result;
