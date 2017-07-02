@@ -24,7 +24,7 @@ public class WNNConvector implements WordConvector {
     public double[] get(String str) {
         int[] temp = new int[str.length()];
         for (int i = 0; i < temp.length; i++) {
-            temp[i] = str.charAt(i) - 'a';
+            temp[i] = str.charAt(i) - com.Testing.MINIMAL_LETTER;;
         }
         return wordNN.get(temp);
     }
@@ -34,5 +34,13 @@ public class WNNConvector implements WordConvector {
                 new Coefficient(wordNN.getFirstCoef()),
                 new Coefficient(wordNN.getSecondCoef())
         };
+    }
+
+    public void setAlp(int alp) {
+        wordNN.setAlp(alp);
+    }
+
+    public int getAlp() {
+        return wordNN.getAlp();
     }
 }

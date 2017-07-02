@@ -54,4 +54,12 @@ public class WordNN implements NeuralNetwork<int[]> {
     public Coefficient getSecondCoef() {
         return secondNN.getCoefficient();
     }
+
+    public void setAlp(int alp) {
+        this.alp = alp;
+    }
+
+    public int getAlp() {
+        return alp;
+    }
 }

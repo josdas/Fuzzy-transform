@@ -31,6 +31,7 @@ public class Dictionary {
         hs.addAll(dictionary);
         dictionary.clear();
         dictionary.addAll(hs);
+
         return dictionary;
     }
 
@@ -42,11 +43,13 @@ public class Dictionary {
             int columnNumber,
             Predicate<Character> goodChar)
             throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(fileName));
-        ArrayList<String> dictionary = new ArrayList<>();
+        Scanner scanner = new Scanner(new File(fileName), "CP1251");
         final int n = scanner.nextInt();
+
+        ArrayList<String> dictionary = new ArrayList<>();
+        System.out.println(scanner.next());
         for (int i = 0; i < n; i++) {
-            String str = scanner.useDelimiter("\\A").next();
+            String str = scanner.nextLine().split(" ")[columnNumber];
             boolean ok = true;
             for (int j = 0; j < str.length(); j++) {
                 if (!goodChar.test(str.charAt(j))) {

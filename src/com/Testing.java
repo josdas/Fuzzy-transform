@@ -5,9 +5,11 @@ import com.NeuralNetwork.Coefficient;
 import com.NeuralNetwork.Option;
 import com.Train.AbsTraining;
 import com.Train.TrainingWNN;
+import javafx.util.Pair;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -26,6 +28,8 @@ public class Testing {
     private static final int ALP = 3;
     private static final int NEURONS_FOR_LETTER = 10;
     private static final long MAX_TIME = 60;
+    public static final char MINIMAL_LETTER = 'а';
+    private static final int TOP_NUMBER = 10;
 
     private static TrainingWNN readTWNNFromFile() {
         Coefficient coefficientF = null;
@@ -48,6 +52,7 @@ public class Testing {
                 option
         );
     }
+
     private static TrainingWNN generationRandomTWNN() {
         Coefficient coefficient = new Coefficient(
                 NEURONS_FOR_LETTER + 1,
@@ -79,6 +84,7 @@ public class Testing {
         }
         System.out.println("Training has been finished");
     }
+
     private static void saveWNNToFile(WNNConvector result) {
         try {
             result.getCoefficient()[0].save("First.txt");
@@ -87,15 +93,17 @@ public class Testing {
             System.out.println("Fail to saveWNNToFile the NN");
         }
     }
+
     private static void trainNNFromFile() {
         TrainingWNN trainingWNN = readTWNNFromFile();
         train(trainingWNN, MAX_TIME);
         WNNConvector result = trainingWNN.getConvector();
         saveWNNToFile(result);
     }
-    private static void handTest(WNNConvector convector) {
+
+    private static void handPairTest(WNNConvector convector) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter two words.");
+        System.out.println("Enter two words");
         System.out.println("Enter \"end!\" if you want to finish test");
         while (true) {
             String strA = scan.nextLine();
@@ -110,10 +118,64 @@ public class Testing {
         }
     }
 
+    private static void handDictionaryTest(WNNConvector convector, ArrayList<String> dictionary) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter one word");
+        System.out.println("Enter \"end!\" if you want to finish test");
+
+        double[][] points = new double[dictionary.size()][];
+        for (int i = 0; i < dictionary.size(); i++) {
+            points[i] = convector.get(dictionary.get(i));
+        }
+
+        while (true) {
+            String str = scan.nextLine();
+            if (Objects.equals(str, "end!")) {
+                break;
+            }
+            double[] pointA = convector.get(str);
+            ArrayList<Pair<Double, Integer>> distances = new ArrayList<>();
+            for (int i = 0; i < points.length; i++) {
+                distances.add(new Pair<Double, Integer>(
+                        VectorDistance.distance(pointA, points[i]),
+                        i
+                ));
+            }
+            distances.sort(
+                    (a, b) -> {
+                        if (a.getKey() < b.getKey()) {
+                            return -1;
+                        }
+                        if (a.getKey().equals(b.getKey())) {
+                            return 0;
+                        }
+                        return 1;
+                    }
+            );
+            for (int i = 0; i < TOP_NUMBER && i < distances.size(); i++) {
+                int v = distances.get(i).getValue();
+                double dis = distances.get(i).getKey();
+                System.out.println(dictionary.get(v) + " " + dis + " " );
+            }
+        }
+    }
+
     public static void main(String[] args) {
+        ArrayList<String> dictionary = null;
+        try {
+            dictionary = Dictionary.readDictionary(
+                    "topwords.txt",
+                    2,
+                    a -> 'а' <= a && a <= 'я' // letter from 'а' to 'я'
+            );
+        } catch (FileNotFoundException e) {
+            System.out.println("Fail to read dictionary");
+            System.exit(1);
+        }
+
         TrainingWNN trainingWNN = readTWNNFromFile();
-        WNNConvector result = trainingWNN.getConvector();
-
-
+        WNNConvector convector = trainingWNN.getConvector();
+        convector.setAlp(33);
+        handDictionaryTest(convector, dictionary);
     }
 }
