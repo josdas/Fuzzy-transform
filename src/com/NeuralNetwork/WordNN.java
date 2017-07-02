@@ -16,9 +16,9 @@ public class WordNN implements NeuralNetwork<int[]> {
                   int alp,
                   int neuronsForLetter,
                   UnaryOperator<Double> active) {
-        assert coefficientF.getNumberIn(0) == neuronsForLetter;
+        assert coefficientF.getNumberIn(0) == neuronsForLetter + 1;
         assert coefficientF.getNumberOut(coefficientF.layersCount() - 1) == neuronsForLetter;
-        assert coefficientS.getNumberIn(0) == neuronsForLetter;
+        assert coefficientS.getNumberIn(0) == neuronsForLetter + 1;
         assert coefficientS.getNumberOut(coefficientS.layersCount() - 1) == neuronsForLetter;
 
         this.firstNN = new BasicNN(coefficientF, active);
@@ -32,10 +32,13 @@ public class WordNN implements NeuralNetwork<int[]> {
         double[][] temp = new double[alp][neuronsForLetter];
         for (int letter : data) {
             for (int j = 0; j < alp; j++) {
+                double[] block = new double[neuronsForLetter + 1];
+                System.arraycopy(temp[j], 0, block, 0, neuronsForLetter);
+                block[neuronsForLetter] = 1;
                 if (j == letter) {
-                    temp[j] = firstNN.get(temp[j]);
+                    temp[j] = firstNN.get(block);
                 } else {
-                    temp[j] = secondNN.get(temp[j]);
+                    temp[j] = secondNN.get(block);
                 }
             }
         }

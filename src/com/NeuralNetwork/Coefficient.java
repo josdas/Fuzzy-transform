@@ -88,16 +88,8 @@ public class Coefficient {
         return size.length - 1;
     }
 
-    public int getNumBlocks() {
-        return size.length;
-    }
-
     public double[][] getBlock(int ind) {
         return data[ind];
-    }
-
-    public int getSize(int i) {
-        return size[i];
     }
 
     public int summarySize() {

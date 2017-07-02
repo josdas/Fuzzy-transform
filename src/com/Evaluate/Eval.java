@@ -25,7 +25,9 @@ public class Eval implements Evaluation {
         generation();
     }
 
-    public void generation() { // create new set of changed words from the dictionary
+    public void generation() {
+        // create new set of changed words from the dictionary
+
         tempWords.clear();
         number.clear();
         for (int i = 0; i < TEMP_SIZE; i++) {

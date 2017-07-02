@@ -24,7 +24,9 @@ public class EvalWNN implements Evaluation {
         generation();
     }
 
-    public void generation() { // create new set of words
+    public void generation() {
+        // create new set of words
+
         tempWords.clear();
         for (int i = 0; i < TEMP_SIZE; i++) {
             StringBuilder str = new StringBuilder();

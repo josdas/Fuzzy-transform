@@ -21,10 +21,12 @@ import java.util.Scanner;
 //done применить сверточную идею для хеширования любых строк
 //todo играть с метриками
 //done сделать обучение с levenshtein
+//todo геометрический поиск ближайших точек через случайные прямые
+//todo словарь + быстрый приближенный поиск (можно делать точный поиск по ближайшим)
 
 public class Testing {
     public static final int ALP = 3;
-    private final static int MAX_TIME = 60 * 60;
+    private final static int MAX_TIME = 60 * 10;
 
     private static ArrayList<String> generationDictionary(int n, int m, int alp) {
         Random random = new Random();
@@ -51,7 +53,7 @@ public class Testing {
     public static void main(String[] args) {
         EvalWNN evalWNN = new EvalWNN();
         Coefficient coefficient = new Coefficient(
-                TrainingWNNC.NEURONS_FOR_LETTER,
+                TrainingWNNC.NEURONS_FOR_LETTER + 1,
                 15,
                 TrainingWNNC.NEURONS_FOR_LETTER
         );
