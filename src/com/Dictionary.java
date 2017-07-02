@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 /**
  * Created by josdas on 02.07.2017.
@@ -33,13 +34,23 @@ public class Dictionary {
         return dictionary;
     }
 
-    public static ArrayList<String> readDictionary(String fileName) throws FileNotFoundException {
+    public static ArrayList<String> readDictionary(String fileName, Predicate<Character> goodChar)
+            throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(fileName));
         ArrayList<String> dictionary = new ArrayList<>();
         final int n = scanner.nextInt();
 
         for (int i = 0; i < n; i++) {
-            dictionary.add(scanner.useDelimiter("\\A").next());
+            String str = scanner.useDelimiter("\\A").next();
+            boolean ok = true;
+            for (int j = 0; j < str.length(); j++) {
+                if (!goodChar.test(str.charAt(j))) {
+                    ok = false;
+                }
+            }
+            if (ok) {
+                dictionary.add(str);
+            }
         }
         return dictionary;
     }

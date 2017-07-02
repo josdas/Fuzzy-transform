@@ -70,7 +70,7 @@ public class Coefficient {
             for (int j = 0; j < out; j++) {
                 for (int k = 0; k < in; k++, cur++) {
                     indexStorage[cur] = new int[]{i - 1, j, k};
-                    data[i - 1][j][k] = scanner.nextDouble();
+                    data[i - 1][j][k] = Double.parseDouble(scanner.next());
                 }
             }
         }
