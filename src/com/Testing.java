@@ -8,12 +8,12 @@ import com.Train.TrainingWNN;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
  * Created by josdas on 26.06.2017.
  */
-
 
 //done применить сверточную идею для хеширования любых строк
 //done играть с метриками
@@ -87,20 +87,33 @@ public class Testing {
             System.out.println("Fail to saveWNNToFile the NN");
         }
     }
-    public static void main(String[] args) {
+    private static void trainNNFromFile() {
         TrainingWNN trainingWNN = readTWNNFromFile();
         train(trainingWNN, MAX_TIME);
         WNNConvector result = trainingWNN.getConvector();
         saveWNNToFile(result);
-
+    }
+    private static void handTest(WNNConvector convector) {
         Scanner scan = new Scanner(System.in);
+        System.out.println("Enter two words.");
+        System.out.println("Enter \"end!\" if you want to finish test");
         while (true) {
             String strA = scan.nextLine();
+            if (Objects.equals(strA, "end!")) {
+                break;
+            }
             String strB = scan.nextLine();
-            double[] pointA = result.get(strA);
-            double[] pointB = result.get(strB);
-            System.out.println(VectorDistance.distance(pointA, pointB) + " "
-                    + StringDistance.levenshtein(strA, strB));
+            double[] pointA = convector.get(strA);
+            double[] pointB = convector.get(strB);
+            System.out.println("Distance in my metric is " + VectorDistance.distance(pointA, pointB));
+            System.out.println("Levenshtein distance is " + StringDistance.levenshtein(strA, strB));
         }
+    }
+
+    public static void main(String[] args) {
+        TrainingWNN trainingWNN = readTWNNFromFile();
+        WNNConvector result = trainingWNN.getConvector();
+
+
     }
 }

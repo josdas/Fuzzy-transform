@@ -34,12 +34,17 @@ public class Dictionary {
         return dictionary;
     }
 
-    public static ArrayList<String> readDictionary(String fileName, Predicate<Character> goodChar)
+    //Read set of words from file.
+    //All the characters in each word contained in the set fit to predicate.
+    //If there is several word in the same string you can choose only one word with number "columnNumber".
+    public static ArrayList<String> readDictionary(
+            String fileName,
+            int columnNumber,
+            Predicate<Character> goodChar)
             throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(fileName));
         ArrayList<String> dictionary = new ArrayList<>();
         final int n = scanner.nextInt();
-
         for (int i = 0; i < n; i++) {
             String str = scanner.useDelimiter("\\A").next();
             boolean ok = true;
