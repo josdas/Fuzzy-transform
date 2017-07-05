@@ -69,7 +69,7 @@ public class WordNN implements NeuralNetwork<int[]> {
     }
 
     public Coefficient getEndCoef() {
-        return secondNN.getCoefficient();
+        return endNN.getCoefficient();
     }
 
     public void setAlp(int alp) {

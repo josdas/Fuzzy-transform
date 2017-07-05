@@ -24,13 +24,17 @@ import java.util.Scanner;
 //todo словарь + быстрый приближенный поиск (можно делать точный поиск по ближайшим)
 //done файлы
 
+//-0.4091322736335701 4.803851053679058
+//Time spent: 3603 seconds
+
 public class Testing {
     private static final int ALP = 3;
-    private static final int NEURONS_FOR_LETTER = 10;
-    private static final long MAX_TIME = 60 * 60;
+    private static final int NEURONS_FOR_LETTER = 12;
+    private static final long MAX_TIME = 60 * 60 * 3;
     private static final int TOP_NUMBER = 10;
 
     private static TrainingWNN readTWNNFromFile() {
+        System.out.println("Start read from file");
         Coefficient coefficientF = null;
         Coefficient coefficientS = null;
         Coefficient coefficientE = null;
@@ -43,6 +47,7 @@ public class Testing {
             coefficientF = new Coefficient("First.txt");
             coefficientS = new Coefficient("Second.txt");
             coefficientE = new Coefficient("End.txt");
+            System.out.println("Reading from file have been finished");
         } catch (FileNotFoundException e) {
             System.out.println("Fail to read the NN");
             System.exit(1);
@@ -56,9 +61,11 @@ public class Testing {
     }
 
     private static TrainingWNN generationRandomTWNN() {
+        System.out.println("Start generation random NN");
         Coefficient coefficient = new Coefficient(
                 NEURONS_FOR_LETTER + 1,
-                15,
+                13,
+                13,
                 NEURONS_FOR_LETTER
         );
         Coefficient coefficientE = new Coefficient(
@@ -70,6 +77,7 @@ public class Testing {
                 ALP,
                 NEURONS_FOR_LETTER
         );
+        System.out.println("Generation has been finished");
         return new TrainingWNN(
                 coefficient,
                 coefficient,
@@ -97,6 +105,7 @@ public class Testing {
             result.getCoefficient()[0].save("First.txt");
             result.getCoefficient()[1].save("Second.txt");
             result.getCoefficient()[2].save("End.txt");
+            System.out.println("SavingWNNToFile has been finished");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             System.out.println("Fail to saveWNNToFile the NN");
         }
@@ -138,7 +147,7 @@ public class Testing {
             double[] pointA = convector.get(str);
             ArrayList<Pair<Double, Integer>> distances = new ArrayList<>();
             for (int i = 0; i < points.length; i++) {
-                distances.add(new Pair<Double, Integer>(
+                distances.add(new Pair<>(
                         VectorDistance.distance(pointA, points[i]),
                         i
                 ));
@@ -159,8 +168,8 @@ public class Testing {
                 double dis = distances.get(i).getKey();
                 System.out.println(
                         dictionary.get(v) + " "
-                        + dis + " "
-                        + StringDistance.levenshtein(str, dictionary.get(v))
+                                + dis + " "
+                                + StringDistance.levenshtein(str, dictionary.get(v))
                 );
             }
         }
@@ -201,6 +210,6 @@ public class Testing {
     }
 
     public static void main(String[] args) {
-        trainNNFromRand();
+        trainNNFromFile();
     }
 }

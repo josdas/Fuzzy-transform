@@ -44,6 +44,8 @@ public class TrainingWNN extends AbsTraining<WNNConvector> {
     public void train(int numberIterations) {
         // simple random gradient descent
 
+        evaluation.generation();
+        result = evaluation.eval(convector);
         for (int iteration = 0; iteration < numberIterations; iteration++) {
             // work with clone of the coefficients
             Coefficient[] coefficient = convector.getCoefficient();
@@ -70,8 +72,6 @@ public class TrainingWNN extends AbsTraining<WNNConvector> {
                 n *= N_DECREASE_K;
             }
         }
-        evaluation.generation();
-        result = evaluation.eval(convector);
         System.out.println(result + " " + dh);
     }
 }
