@@ -1,7 +1,7 @@
 package com.Convector;
 
 import com.NeuralNetwork.Coefficient;
-import com.NeuralNetwork.Option;
+import com.Train.Option;
 import com.NeuralNetwork.WordNN;
 
 /**

@@ -11,14 +11,20 @@ import java.util.Scanner;
  * Created by josdas on 26.06.2017.
  */
 public class Coefficient {
+    /**
+     *  Special storage class for NN
+     */
+
     private double data[][][];
     private int size[];
     private int indexStorage[][];
 
     public Coefficient(int... size) {
-        // create |size| - 1 layers.
-        // The input size of the first layer is size[0].
-        // All layers have random wights.
+        /*
+        create |size| - 1 layers.
+        The input size of the first layer is size[0].
+        All layers have random wights.
+        */
 
         this.size = size;
         data = new double[size.length - 1][][];
@@ -45,7 +51,7 @@ public class Coefficient {
         }
     }
 
-    public Coefficient(String fileName) throws FileNotFoundException {
+    public Coefficient(String fileName) throws FileNotFoundException { // read from file
         Scanner scanner = new Scanner(new File(fileName));
         final int n = scanner.nextInt();
 
@@ -76,7 +82,7 @@ public class Coefficient {
         }
     }
 
-    public Coefficient(Coefficient coefficient) {
+    public Coefficient(Coefficient coefficient) { // deep copy
         this.data = new double[coefficient.data.length][][];
         for (int i = 0; i < data.length; i++) {
             data[i] = new double[coefficient.data[i].length][];
@@ -121,10 +127,6 @@ public class Coefficient {
 
     public int layersCount() {
         return size.length - 1;
-    }
-
-    public double[][] getBlock(int ind) {
-        return data[ind];
     }
 
     public int summarySize() {

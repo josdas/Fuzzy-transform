@@ -37,9 +37,9 @@ public class BasicNN implements NeuralNetwork<double[]> {
             }
             // chosen function depends on number
             if (number < coefficient.layersCount() - 1) {
-                result[i] = active.apply(temp);
+                result[i] = active.apply(temp); // standard function
             } else {
-                result[i] = activeLast.apply(temp);
+                result[i] = activeLast.apply(temp); // function for the last layer
             }
         }
         return result;

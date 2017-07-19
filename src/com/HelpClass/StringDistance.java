@@ -11,7 +11,6 @@ public class StringDistance {
 
         int[] D1;
         int[] D2 = new int[n + 1];
-
         for (int i = 0; i <= n; i++) {
             D2[i] = i;
         }
@@ -22,8 +21,7 @@ public class StringDistance {
             for (int j = 0; j <= n; j++) {
                 if (j == 0) {
                     D2[j] = i;
-                }
-                else {
+                } else {
                     int cost = (a.charAt(i - 1) != b.charAt(j - 1)) ? 1 : 0;
                     if (D2[j - 1] < D1[j] && D2[j - 1] < D1[j - 1] + cost) {
                         D2[j] = D2[j - 1] + 1;

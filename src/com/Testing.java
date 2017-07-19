@@ -5,8 +5,7 @@ import com.HelpClass.Dictionary;
 import com.HelpClass.StringDistance;
 import com.HelpClass.VectorDistance;
 import com.NeuralNetwork.Coefficient;
-import com.NeuralNetwork.Option;
-import com.Train.AbsTraining;
+import com.Train.Option;
 import com.Train.TrainingWNN;
 import javafx.util.Pair;
 
@@ -30,11 +29,17 @@ import java.util.function.UnaryOperator;
 //todo стохастическое обучение для случайной пары + градиент
 
 public class Testing {
+    public static final UnaryOperator<Double> ACTIVE_F_A = (Double a) -> {
+        return 1.0 / (1 + Math.exp(-a));
+    };
+    public static final UnaryOperator<Double> ACTIVE_F_B = (Double a) -> {
+        return (Math.exp(a) - Math.exp(-a)) / (Math.exp(a) + Math.exp(-a));
+    };
     private static final int ALP = 3;
     private static final int NEURONS_FOR_LETTER = 10;
     private static final long MAX_TIME = 60 * 60 * 1;
     private static final int TOP_NUMBER = 10;
-    private static final UnaryOperator<Double> ACTIVE = AbsTraining.ACTIVE_F_B;
+    private static final UnaryOperator<Double> ACTIVE = ACTIVE_F_B;
 
     private static TrainingWNN readTWNNFromFile() {
         System.out.println("Start read from file");

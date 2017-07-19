@@ -3,7 +3,6 @@ package com.Train;
 import com.Convector.WNNConvector;
 import com.Evaluate.EvalWNN;
 import com.NeuralNetwork.Coefficient;
-import com.NeuralNetwork.Option;
 import com.NeuralNetwork.WordNN;
 
 /**

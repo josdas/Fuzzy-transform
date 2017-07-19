@@ -1,5 +1,7 @@
 package com.NeuralNetwork;
 
+import com.Train.Option;
+
 /**
  * Created by josdas on 29.06.2017.
  */
