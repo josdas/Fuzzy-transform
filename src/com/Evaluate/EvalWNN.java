@@ -1,8 +1,8 @@
 package com.Evaluate;
 
 import com.Convector.WordConvector;
-import com.StringDistance;
-import com.VectorDistance;
+import com.HelpClass.StringDistance;
+import com.HelpClass.VectorDistance;
 
 import java.util.ArrayList;
 import java.util.Random;

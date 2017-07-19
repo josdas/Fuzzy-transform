@@ -41,16 +41,18 @@ public class WNNConvector implements WordConvector {
         };
     }
 
-    public void setAlp(int alp) {
+    public WNNConvector setAlp(int alp) {
         wordNN.setAlp(alp);
+        return this;
     }
 
     public int getAlp() {
         return wordNN.getAlp();
     }
 
-    public void setMinLetter(char minLetter) {
+    public WNNConvector setMinLetter(char minLetter) {
         this.minLetter = minLetter;
+        return this;
     }
 
 }

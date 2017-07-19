@@ -1,4 +1,4 @@
-package com;
+package com.HelpClass;
 
 import java.io.File;
 import java.io.FileNotFoundException;

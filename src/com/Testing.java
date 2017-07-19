@@ -1,6 +1,9 @@
 package com;
 
 import com.Convector.WNNConvector;
+import com.HelpClass.Dictionary;
+import com.HelpClass.StringDistance;
+import com.HelpClass.VectorDistance;
 import com.NeuralNetwork.Coefficient;
 import com.NeuralNetwork.Option;
 import com.Train.AbsTraining;
@@ -12,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.function.UnaryOperator;
 
 /**
  * Created by josdas on 26.06.2017.
@@ -23,15 +27,14 @@ import java.util.Scanner;
 //todo геометрический поиск ближайших точек через случайные прямые
 //todo словарь + быстрый приближенный поиск (можно делать точный поиск по ближайшим)
 //done файлы
-
-//-0.4091322736335701 4.803851053679058
-//Time spent: 3603 seconds
+//todo стохастическое обучение для случайной пары + градиент
 
 public class Testing {
     private static final int ALP = 3;
-    private static final int NEURONS_FOR_LETTER = 12;
-    private static final long MAX_TIME = 60 * 60 * 3;
+    private static final int NEURONS_FOR_LETTER = 10;
+    private static final long MAX_TIME = 60 * 60 * 1;
     private static final int TOP_NUMBER = 10;
+    private static final UnaryOperator<Double> ACTIVE = AbsTraining.ACTIVE_F_B;
 
     private static TrainingWNN readTWNNFromFile() {
         System.out.println("Start read from file");
@@ -39,7 +42,7 @@ public class Testing {
         Coefficient coefficientS = null;
         Coefficient coefficientE = null;
         Option option = new Option(
-                AbsTraining.ACTIVE_F_A,
+                ACTIVE,
                 ALP,
                 NEURONS_FOR_LETTER
         );
@@ -70,10 +73,11 @@ public class Testing {
         );
         Coefficient coefficientE = new Coefficient(
                 NEURONS_FOR_LETTER + 1,
+                20,
                 NEURONS_FOR_LETTER
         );
         Option option = new Option(
-                AbsTraining.ACTIVE_F_A,
+                ACTIVE,
                 ALP,
                 NEURONS_FOR_LETTER
         );
@@ -211,5 +215,6 @@ public class Testing {
 
     public static void main(String[] args) {
         trainNNFromFile();
+
     }
 }

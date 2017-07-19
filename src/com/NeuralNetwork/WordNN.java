@@ -25,7 +25,7 @@ public class WordNN implements NeuralNetwork<int[]> {
 
         this.firstNN = new BasicNN(coefficientF, option.active);
         this.secondNN = new BasicNN(coefficientS, option.active);
-        this.endNN = new BasicNN(coefficientE, x -> x);
+        this.endNN = new BasicNN(coefficientE, option.active, x -> x);
         this.alp = option.alp;
         this.neuronsForLetter = option.neuronsForLetter;
     }

@@ -1,9 +1,10 @@
-package com;
+package com.HelpClass;
 
 /**
  * Created by josdas on 29.06.2017.
  */
 public class StringDistance {
+    //simple DP
     public static double levenshtein(String a, String b) {
         final int m = a.length();
         final int n = b.length();
