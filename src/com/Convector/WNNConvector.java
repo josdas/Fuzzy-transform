@@ -11,8 +11,9 @@ public class WNNConvector implements WordConvector {
     private WordNN wordNN;
     private char minLetter;
 
-    public WNNConvector(WordNN wordNN) {
+    public WNNConvector(WordNN wordNN, char minLetter) {
         this.wordNN = wordNN;
+        this.minLetter = minLetter;
     }
 
     public WNNConvector(Coefficient coefficientF,
@@ -28,7 +29,8 @@ public class WNNConvector implements WordConvector {
     public double[] get(String str) {
         int[] temp = new int[str.length()];
         for (int i = 0; i < temp.length; i++) {
-            temp[i] = str.charAt(i) - minLetter; // alphabet transform to [0;n] format
+            temp[i] = str.charAt(i) - minLetter; // alphabet transform to [0;maxAlp) format
+            assert temp[i] >= 0 && temp[i] < getAlp();
         }
         return wordNN.get(temp);
     }
@@ -51,9 +53,16 @@ public class WNNConvector implements WordConvector {
         return wordNN.getAlp();
     }
 
+    public WordNN getWordNN() {
+        return wordNN;
+    }
+
     public WNNConvector setMinLetter(char minLetter) {
         this.minLetter = minLetter;
         return this;
     }
 
+    public char getMinLetter() {
+        return minLetter;
+    }
 }

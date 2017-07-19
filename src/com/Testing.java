@@ -27,6 +27,7 @@ import java.util.function.UnaryOperator;
 //todo словарь + быстрый приближенный поиск (можно делать точный поиск по ближайшим)
 //done файлы
 //todo стохастическое обучение для случайной пары + градиент
+//todo refactoring Testing
 
 public class Testing {
     public static final UnaryOperator<Double> ACTIVE_F_A = (Double a) -> {
@@ -37,7 +38,7 @@ public class Testing {
     };
     private static final int ALP = 3;
     private static final int NEURONS_FOR_LETTER = 10;
-    private static final long MAX_TIME = 30;
+    private static final long MAX_TIME = 60 * 10;
     private static final int TOP_NUMBER = 10;
     private static final UnaryOperator<Double> ACTIVE = ACTIVE_F_B;
 
@@ -55,11 +56,11 @@ public class Testing {
             coefficientF = new Coefficient("First.txt");
             coefficientS = new Coefficient("Second.txt");
             coefficientE = new Coefficient("End.txt");
-            System.out.println("Reading from file have been finished");
         } catch (FileNotFoundException e) {
             System.out.println("Fail to read the NN");
             System.exit(1);
         }
+        System.out.println("Reading from file have been finished");
         return new TrainingWNN(
                 coefficientF,
                 coefficientS,
@@ -76,7 +77,9 @@ public class Testing {
                 13,
                 NEURONS_FOR_LETTER
         );
-        Coefficient coefficientS = new Coefficient(coefficientF);
+        Coefficient coefficientS = new Coefficient(
+                coefficientF
+        );
         Coefficient coefficientE = new Coefficient(
                 NEURONS_FOR_LETTER + 1,
                 20,
@@ -120,7 +123,6 @@ public class Testing {
             System.out.println("Fail to saveWNNToFile the NN");
         }
     }
-
 
     private static void handPairTest(WNNConvector convector) {
         Scanner scan = new Scanner(System.in);
@@ -200,8 +202,7 @@ public class Testing {
 
         TrainingWNN trainingWNN = readTWNNFromFile();
         WNNConvector convector = trainingWNN.getConvector();
-        convector.setAlp(33);
-        convector.setMinLetter('а');
+        convector.setAlp(33).setMinLetter('а'); // ru
         handDictionaryTest(convector, dictionary);
     }
 

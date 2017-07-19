@@ -9,10 +9,10 @@ import com.NeuralNetwork.WordNN;
  * Created by josdas on 30.06.2017.
  */
 public class TrainingWNN extends AbsTraining<WNNConvector> {
-    private static final double START_DH = 5;
-    private static final double START_N = 5;
-    private static final double DH_DECREASE_K = 0.999;
-    private static final double N_DECREASE_K = 0.999;
+    private static final double START_DH = 2;
+    private static final double START_N = 2;
+    private static final double DH_DECREASE_K = 0.99;
+    private static final double N_DECREASE_K = 0.99;
     private static final double DH_MIN = 0.1;
     private static final double N_MIN = 1;
 
@@ -37,14 +37,18 @@ public class TrainingWNN extends AbsTraining<WNNConvector> {
         );
         this.option = option;
         this.evaluation = new EvalWNN();
+        evaluation.generation();
+    }
+
+    public double eval(WNNConvector nConvector) {
+        return evaluation.eval(nConvector);
     }
 
     @Override
     public void train(int numberIterations) {
         /* simple random gradient descent */
 
-        evaluation.generation();
-        result = evaluation.eval(convector);
+        result = eval(convector);
         for (int iteration = 0; iteration < numberIterations; iteration++) {
             // work with clone of the coefficients
             Coefficient[] coefficients = convector.getDeepCoefficients();
@@ -60,10 +64,10 @@ public class TrainingWNN extends AbsTraining<WNNConvector> {
                 }
             }
             WordNN newNN = new WordNN(coefficients[0], coefficients[1], coefficients[2], option);
-            WNNConvector nConvector = new WNNConvector(newNN);
+            WNNConvector nConvector = new WNNConvector(newNN, convector.getMinLetter());
 
             // calc function of the NN
-            double nRes = evaluation.eval(nConvector);
+            double nRes = eval(nConvector);
             if (nRes > result) {
                 result = nRes;
                 convector = nConvector;
@@ -72,5 +76,6 @@ public class TrainingWNN extends AbsTraining<WNNConvector> {
             }
         }
         System.out.println(result + " " + dh);
+        evaluation.generation();
     }
 }
