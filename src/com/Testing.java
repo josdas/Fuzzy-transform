@@ -37,7 +37,7 @@ public class Testing {
     };
     private static final int ALP = 3;
     private static final int NEURONS_FOR_LETTER = 10;
-    private static final long MAX_TIME = 60 * 60 * 1;
+    private static final long MAX_TIME = 30;
     private static final int TOP_NUMBER = 10;
     private static final UnaryOperator<Double> ACTIVE = ACTIVE_F_B;
 
@@ -70,12 +70,13 @@ public class Testing {
 
     private static TrainingWNN generationRandomTWNN() {
         System.out.println("Start generation random NN");
-        Coefficient coefficient = new Coefficient(
+        Coefficient coefficientF = new Coefficient(
                 NEURONS_FOR_LETTER + 1,
                 13,
                 13,
                 NEURONS_FOR_LETTER
         );
+        Coefficient coefficientS = new Coefficient(coefficientF);
         Coefficient coefficientE = new Coefficient(
                 NEURONS_FOR_LETTER + 1,
                 20,
@@ -88,8 +89,8 @@ public class Testing {
         );
         System.out.println("Generation has been finished");
         return new TrainingWNN(
-                coefficient,
-                coefficient,
+                coefficientF,
+                coefficientS,
                 coefficientE,
                 option
         );
@@ -111,9 +112,9 @@ public class Testing {
 
     private static void saveWNNToFile(WNNConvector result) {
         try {
-            result.getCoefficient()[0].save("First.txt");
-            result.getCoefficient()[1].save("Second.txt");
-            result.getCoefficient()[2].save("End.txt");
+            result.getDeepCoefficients()[0].save("First.txt");
+            result.getDeepCoefficients()[1].save("Second.txt");
+            result.getDeepCoefficients()[2].save("End.txt");
             System.out.println("SavingWNNToFile has been finished");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             System.out.println("Fail to saveWNNToFile the NN");
@@ -184,6 +185,26 @@ public class Testing {
         }
     }
 
+    private static void dictionaryTest() {
+        ArrayList<String> dictionary = null;
+        try {
+            dictionary = Dictionary.readDictionary(
+                    "topwords.txt",
+                    2,
+                    a -> 'а' <= a && a <= 'я' // letter from 'а' to 'я'
+            );
+        } catch (FileNotFoundException e) {
+            System.out.println("Fail to read a dictionary");
+            System.exit(1);
+        }
+
+        TrainingWNN trainingWNN = readTWNNFromFile();
+        WNNConvector convector = trainingWNN.getConvector();
+        convector.setAlp(33);
+        convector.setMinLetter('а');
+        handDictionaryTest(convector, dictionary);
+    }
+
     private static void trainNNFromFile() {
         TrainingWNN trainingWNN = readTWNNFromFile();
         train(trainingWNN, MAX_TIME);
@@ -198,28 +219,7 @@ public class Testing {
         saveWNNToFile(result);
     }
 
-    private static void dictionaryTest() {
-        ArrayList<String> dictionary = null;
-        try {
-            dictionary = Dictionary.readDictionary(
-                    "topwords.txt",
-                    2,
-                    a -> 'а' <= a && a <= 'я' // letter from 'а' to 'я'
-            );
-        } catch (FileNotFoundException e) {
-            System.out.println("Fail to read dictionary");
-            System.exit(1);
-        }
-
-        TrainingWNN trainingWNN = readTWNNFromFile();
-        WNNConvector convector = trainingWNN.getConvector();
-        convector.setAlp(33);
-        convector.setMinLetter('а');
-        handDictionaryTest(convector, dictionary);
-    }
-
     public static void main(String[] args) {
         trainNNFromFile();
-
     }
 }

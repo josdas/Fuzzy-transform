@@ -28,12 +28,13 @@ public class WNNConvector implements WordConvector {
     public double[] get(String str) {
         int[] temp = new int[str.length()];
         for (int i = 0; i < temp.length; i++) {
-            temp[i] = str.charAt(i) - minLetter;
+            temp[i] = str.charAt(i) - minLetter; // alphabet transform to [0;n] format
         }
         return wordNN.get(temp);
     }
 
-    public Coefficient[] getCoefficient() {
+    public Coefficient[] getDeepCoefficients() {
+        // get array of deep copes
         return new Coefficient[]{
                 new Coefficient(wordNN.getFirstCoef()),
                 new Coefficient(wordNN.getSecondCoef()),

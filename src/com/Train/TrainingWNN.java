@@ -27,12 +27,12 @@ public class TrainingWNN extends AbsTraining<WNNConvector> {
                        Coefficient startCoefE,
                        Option option) {
         super(
-                new WNNConvector(
+                new WNNConvector( //todo remove
                         startCoefF,
                         startCoefS,
                         startCoefE,
                         option,
-                        'a'
+                        'a' //todo WTF
                 )
         );
         this.option = option;
@@ -41,25 +41,25 @@ public class TrainingWNN extends AbsTraining<WNNConvector> {
 
     @Override
     public void train(int numberIterations) {
-        // simple random gradient descent
+        /* simple random gradient descent */
 
         evaluation.generation();
         result = evaluation.eval(convector);
         for (int iteration = 0; iteration < numberIterations; iteration++) {
             // work with clone of the coefficients
-            Coefficient[] coefficient = convector.getCoefficient();
+            Coefficient[] coefficients = convector.getDeepCoefficients();
 
             // do small change of the arrays
-            for (Coefficient aCoefficient : coefficient) {
+            for (Coefficient coefficient : coefficients) {
                 int m = random.nextInt((int) (n + N_MIN));
                 for (int j = 0; j < m; j++) {
-                    int t = random.nextInt(aCoefficient.summarySize());
-                    double x = aCoefficient.get(t);
+                    int t = random.nextInt(coefficient.summarySize());
+                    double x = coefficient.get(t);
                     x += (random.nextDouble() - 0.5) * (dh + DH_MIN);
-                    aCoefficient.set(t, x);
+                    coefficient.set(t, x);
                 }
             }
-            WordNN newNN = new WordNN(coefficient[0], coefficient[1], coefficient[2], option);
+            WordNN newNN = new WordNN(coefficients[0], coefficients[1], coefficients[2], option);
             WNNConvector nConvector = new WNNConvector(newNN);
 
             // calc function of the NN

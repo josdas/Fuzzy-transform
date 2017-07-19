@@ -43,7 +43,7 @@ public class Dictionary {
             int columnNumber,
             Predicate<Character> goodChar)
             throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(fileName), "CP1251");
+        Scanner scanner = new Scanner(new File(fileName), "CP1251"); // for rus text
         final int n = scanner.nextInt();
 
         ArrayList<String> dictionary = new ArrayList<>();
