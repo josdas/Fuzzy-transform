@@ -2,7 +2,7 @@
 
 The way for utilizing  neural network as transformation from string to vector. 
 
-The distance between two vectors is similar to Levenshtein. This way can be used to draw words on a plot.
+The distance between two vectors is similar to Levenshtein. This method can be used to draw words on a plot.
 
 I used recurent neural network. It lets process letters one by one.
 
